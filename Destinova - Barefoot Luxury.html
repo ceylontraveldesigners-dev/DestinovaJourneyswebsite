@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barefoot Luxury — Destinova Journeys Private Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #1C2B3A;
+    --navy-l:  #243447;
+    --gold:    #C5A05A;
+    --gold-l:  #D4B576;
+    --cream:   #F7F2EA;
+    --cream-d: #EDE6D8;
+    --sage:    #5C6B52;
+    --charcoal:#2E2E2E;
+    --white:   #FDFBF8;
+    --muted:   #7A7A72;
+    --border:  rgba(197,160,90,0.22);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--cream); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 56px; height: 80px;
+    background: transparent;
+    transition: background 0.4s, height 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(28,43,58,0.96);
+    backdrop-filter: blur(14px);
+    height: 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo img { height: 48px; filter: brightness(0) invert(1); }
+  .nav-links { display:flex; gap:36px; list-style:none; }
+  .nav-links a {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(255,255,255,0.82);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── COVER ── */
+  .cover {
+    position: relative; height: 100vh; min-height: 700px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .cover-bg {
+    position: absolute; inset: 0;
+    background-image: url('images/DJI_20250224073003_0250_D.jpg');
+    background-size: cover; background-position: center 50%;
+    transform: scale(1.04);
+    animation: zoomSlow 18s ease-out forwards;
+  }
+  @keyframes zoomSlow { to { transform: scale(1); } }
+  .cover-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(28,43,58,0.15) 0%,
+      rgba(28,43,58,0.35) 40%,
+      rgba(28,43,58,0.72) 100%
+    );
+  }
+  .cover-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    animation: fadeUp 1.4s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(28px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+  .cover-eyebrow {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
+    animation: fadeUp 1.4s 0.2s ease both;
+  }
+  .cover-rule {
+    width: 48px; height: 1px; background: var(--gold);
+    margin: 0 auto 22px; opacity: 0.8;
+    animation: fadeUp 1.4s 0.3s ease both;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 8vw, 82px);
+    font-weight: 400; font-style: italic;
+    color: var(--white); line-height: 1.1;
+    margin-bottom: 18px;
+    animation: fadeUp 1.4s 0.4s ease both;
+  }
+  .cover-destinations {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; letter-spacing: 0.12em;
+    color: var(--gold-l); margin-bottom: 16px;
+    animation: fadeUp 1.4s 0.5s ease both;
+  }
+  .cover-meta {
+    font-size: 9px; font-weight: 500; letter-spacing: 0.28em;
+    text-transform: uppercase; color: rgba(253,251,248,0.75);
+    animation: fadeUp 1.4s 0.6s ease both;
+  }
+  .cover-bottom {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 28px 56px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    z-index: 2;
+  }
+  .cover-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 13px;
+    color: rgba(253,251,248,0.6);
+  }
+  .cover-date {
+    font-size: 8px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .scroll-hint {
+    position: absolute; bottom: 68px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    gap: 8px; z-index: 2; opacity: 0.6;
+    animation: fadeUp 2s 1.2s ease both;
+  }
+  .scroll-hint span {
+    font-size: 8px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--white);
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--white), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+  @keyframes scrollPulse {
+    0%,100% { opacity:0.4; } 50% { opacity:1; }
+  }
+
+  /* ── OVERVIEW ── */
+  .overview {
+    background: var(--cream);
+    padding: 100px 56px 80px;
+  }
+  .overview-inner {
+    max-width: 1160px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 340px;
+    gap: 80px; align-items: start;
+  }
+  .section-tag {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 400; font-style: italic;
+    color: var(--navy); line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .section-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .gold-rule {
+    width: 56px; height: 1px;
+    background: var(--gold); margin-bottom: 28px;
+  }
+  .overview-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; line-height: 1.85;
+    color: var(--charcoal); margin-bottom: 48px;
+  }
+  .stops { list-style: none; position: relative; }
+  .stops::before {
+    content: ''; position: absolute;
+    left: 20px; top: 28px; bottom: 28px; width: 1px;
+    background: linear-gradient(to bottom, var(--gold) 0%, rgba(197,160,90,0.1) 100%);
+  }
+  .stop {
+    display: flex; gap: 24px; align-items: flex-start;
+    padding-bottom: 28px; position: relative;
+    opacity: 0; transform: translateX(-16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .stop.visible { opacity:1; transform:none; }
+  .stop-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--navy); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 600; color: var(--gold);
+    letter-spacing: 0.05em; position: relative; z-index: 1;
+  }
+  .stop-text { padding-top: 6px; }
+  .stop-dest {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; color: var(--navy); margin-bottom: 4px;
+  }
+  .stop-hotel {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 13px;
+    color: var(--gold); margin-bottom: 4px;
+  }
+  .stop-tagline {
+    font-size: 11px; color: var(--muted); letter-spacing: 0.02em;
+  }
+  .overview-collage {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 8px; position: sticky; top: 100px;
+  }
+  .collage-img {
+    aspect-ratio: 1/1; overflow: hidden; position: relative;
+  }
+  .collage-img:first-child {
+    grid-column: 1 / -1; aspect-ratio: 16/9;
+  }
+  .collage-img img {
+    width:100%; height:100%; object-fit:cover;
+    transition: transform 0.6s ease;
+  }
+  .collage-img:hover img { transform: scale(1.04); }
+  .collage-img::after {
+    content: ''; position: absolute; inset: 0;
+    border: 1px solid rgba(197,160,90,0.25);
+    pointer-events: none;
+  }
+
+  /* ── DETAILS BAR ── */
+  .details-bar {
+    background: var(--navy);
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    padding: 28px 56px;
+  }
+  .details-bar-item { padding: 0 16px; }
+  .details-bar-item:not(:last-child) {
+    border-right: 1px solid rgba(197,160,90,0.15);
+  }
+  .db-label {
+    font-size: 8px; font-weight: 600; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 6px; display: block;
+  }
+  .db-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px; color: var(--white);
+  }
+
+  /* ── DESTINATION SECTIONS ── */
+  .day-section {
+    background: var(--white);
+    border-bottom: 1px solid rgba(197,160,90,0.1);
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .day-section.visible { opacity:1; transform:none; }
+
+  /* Single hero */
+  .day-hero {
+    position: relative; height: 52vh; min-height: 380px;
+    overflow: hidden;
+  }
+  .day-hero img {
+    width:100%; height:100%; object-fit:cover;
+    object-position: center center;
+    transition: transform 8s ease;
+  }
+  .day-section.visible .day-hero img { transform: scale(1.03); }
+  .day-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(28,43,58,0.75) 0%,
+      rgba(28,43,58,0.05) 60%
+    );
+  }
+
+  /* Split dual hero */
+  .dual-hero {
+    position: relative; height: 52vh; min-height: 380px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+  .dual-hero-panel {
+    position: relative; overflow: hidden;
+  }
+  .dual-hero-panel img {
+    width:100%; height:100%; object-fit:cover;
+    transition: transform 8s ease;
+  }
+  .day-section.visible .dual-hero-panel img { transform: scale(1.03); }
+  .dual-hero-panel::after {
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(to top, rgba(28,43,58,0.65) 0%, transparent 55%);
+  }
+  .dual-hero-divider {
+    position: absolute; top: 0; bottom: 0;
+    left: 50%; width: 2px;
+    background: linear-gradient(to bottom, transparent, rgba(197,160,90,0.6), transparent);
+    z-index: 3;
+  }
+  .dual-hero-label {
+    position: absolute; bottom: 28px; z-index: 4;
+  }
+  .dual-hero-label.left { left: 40px; }
+  .dual-hero-label.right { left: calc(50% + 40px); }
+
+  .day-hero-label {
+    position: absolute; bottom: 28px; left: 56px; z-index: 2;
+  }
+  .day-num {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 6px; display: block;
+  }
+  .day-loc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 18px;
+    color: var(--white); display: block;
+  }
+  .day-loc-rule {
+    width: 40px; height: 1px;
+    background: rgba(197,160,90,0.7); margin-top: 8px;
+  }
+
+  /* Day body */
+  .day-body {
+    display: grid; grid-template-columns: 1fr 280px;
+    gap: 56px; padding: 52px 56px 40px;
+    max-width: 1160px; margin: 0 auto;
+  }
+  .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 400; font-style: italic;
+    color: var(--navy); margin-bottom: 14px; line-height: 1.2;
+  }
+  .day-gold-rule {
+    width: 80px; height: 1px; background: var(--gold); margin-bottom: 22px;
+  }
+  .day-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; line-height: 1.9; color: var(--charcoal);
+  }
+  .day-text + .day-text { margin-top: 16px; }
+  .day-extra-img {
+    margin-top: 24px; overflow: hidden; position: relative;
+  }
+  .day-extra-img img {
+    width:100%; aspect-ratio:4/3; object-fit:cover;
+    display:block; transition: transform 0.5s;
+  }
+  .day-extra-img:hover img { transform: scale(1.03); }
+  .day-extra-img::after {
+    content:''; position:absolute; inset:0;
+    border:1px solid rgba(197,160,90,0.3); pointer-events:none;
+  }
+
+  /* Highlights */
+  .day-highlights { padding-top: 6px; }
+  .highlights-label {
+    font-size: 8px; font-weight: 600; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px; display: block;
+  }
+  .highlight-item {
+    display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;
+  }
+  .hi-diamond { color: var(--gold); font-size: 7px; margin-top: 4px; flex-shrink: 0; }
+  .hi-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 14px; color: var(--muted); line-height: 1.6;
+  }
+
+  /* Accom strip */
+  .accom-strip {
+    display: flex; gap: 12px; padding: 0 56px 40px;
+    max-width: 1160px; margin: 0 auto;
+  }
+  .accom-card {
+    background: var(--navy-l); padding: 14px 20px; flex: 1; min-width: 140px;
+  }
+  .ac-label {
+    font-size: 7px; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 6px; display: block;
+  }
+  .ac-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 14px; color: var(--white);
+  }
+
+  /* ── PRICING ── */
+  .pricing {
+    background: var(--navy);
+    padding: 100px 56px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .pricing::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(197,160,90,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .pricing-logo { margin-bottom: 32px; }
+  .pricing-logo img { height: 90px; filter: brightness(0) invert(1); opacity: 0.9; }
+  .pricing-eyebrow {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+  }
+  .pricing-rule { width: 60px; height: 1px; background: var(--gold); margin: 0 auto 18px; opacity: 0.6; }
+  .pricing-per {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; color: rgba(197,160,90,0.55); margin-bottom: 12px;
+  }
+  .pricing-main {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 8vw, 80px);
+    font-weight: 400; font-style: italic;
+    color: var(--white); line-height: 1; margin-bottom: 14px;
+  }
+  .pricing-total {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; color: var(--gold-l); margin-bottom: 40px;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+  }
+  .pricing-total::before, .pricing-total::after {
+    content: ''; display:block; width: 40px; height: 1px; background: rgba(197,160,90,0.35);
+  }
+  .inclusions { max-width: 560px; margin: 0 auto 40px; text-align: left; }
+  .inc-title {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+    text-align: center; margin-bottom: 22px;
+  }
+  .inc-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 12px 0; border-bottom: 1px solid rgba(197,160,90,0.1);
+  }
+  .inc-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink:0; margin-top: 6px; }
+  .inc-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; color: rgba(253,251,248,0.82); line-height: 1.5;
+  }
+  .pricing-note { font-size: 10px; color: rgba(122,122,114,0.8); line-height: 2; margin-bottom: 56px; }
+  .contact-strip {
+    border-top: 1px solid rgba(197,160,90,0.2); padding-top: 40px;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .contact-cta {
+    font-size: 8px; font-weight: 600; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+  }
+  .contact-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 20px; color: var(--white);
+  }
+  .contact-email {
+    font-size: 11px; color: var(--muted); text-decoration: none; transition: color 0.3s;
+  }
+  .contact-email:hover { color: var(--gold); }
+  .contact-web { font-size: 10px; color: rgba(197,160,90,0.5); letter-spacing: 0.08em; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-l); padding: 22px 56px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(197,160,90,0.15);
+  }
+  footer .f-left { font-size: 9px; letter-spacing: 0.15em; color: rgba(122,122,114,0.6); text-transform: uppercase; }
+  footer .f-right { font-size: 9px; color: rgba(197,160,90,0.4); letter-spacing: 0.1em; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .overview, .pricing { padding: 72px 24px 60px; }
+    .overview-inner { grid-template-columns: 1fr; gap: 48px; }
+    .overview-collage { position: static; }
+    .day-body { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px 28px; }
+    .accom-strip { flex-wrap: wrap; padding: 0 24px 32px; }
+    .day-hero-label { left: 24px; }
+    .dual-hero { grid-template-columns: 1fr; height: auto; }
+    .dual-hero-panel { height: 260px; }
+    .dual-hero-label.right { left: 24px; bottom: 28px; }
+    .dual-hero-divider { display: none; }
+    .details-bar { grid-template-columns: 1fr 1fr; padding: 24px; gap: 20px; }
+    .details-bar-item { border-right: none; padding: 0; }
+    .cover-bottom { padding: 20px 24px; }
+    footer { padding: 18px 24px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="main-nav">
+  <div class="nav-logo">
+    <img src="images/destinova-logo-cropped-tight.png" alt="Destinova Journeys">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#negombo">Itinerary</a></li>
+    <li><a href="#pricing">Investment</a></li>
+  </ul>
+</nav>
+
+<!-- ── COVER ── -->
+<section class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-overlay"></div>
+  <div class="cover-content">
+    <span class="cover-eyebrow">Private Collection · Destinova Journeys</span>
+    <div class="cover-rule"></div>
+    <h1 class="cover-title">Barefoot Luxury</h1>
+    <p class="cover-destinations">Negombo &nbsp;·&nbsp; Anuradhapura &nbsp;·&nbsp; Hatton &nbsp;·&nbsp; Tangalle</p>
+    <p class="cover-meta">11 Days &nbsp;·&nbsp; A Private Journey</p>
+  </div>
+  <div class="scroll-hint">
+    <span>Discover</span>
+    <div class="scroll-line"></div>
+  </div>
+  <div class="cover-bottom">
+    <span class="cover-tag">Curated exclusively for you</span>
+    <span class="cover-date">Private Collection · 2026</span>
+  </div>
+</section>
+
+<!-- ── OVERVIEW ── -->
+<section class="overview" id="overview">
+  <div class="overview-inner">
+    <div class="overview-left">
+      <span class="section-tag">Your Journey</span>
+      <h2 class="section-title">An Extraordinary Passage</h2>
+      <p class="section-sub">Through the Soul of Sri Lanka</p>
+      <div class="gold-rule"></div>
+      <p class="overview-intro">
+        From the colonial shores of Negombo to the sacred stupas of Anuradhapura, the untamed wilderness of Wilpattu, the emerald heights of Hatton's tea country, and the golden sands of Tangalle — this eleven-day private journey distils Sri Lanka's most extraordinary landscapes and experiences into a seamless, unhurried passage. Every helicopter transfer, every estate, every encounter is woven together by Destinova Journeys to give you the island not as a tourist, but as a privileged guest.
+      </p>
+      <ul class="stops">
+        <li class="stop">
+          <div class="stop-num">01</div>
+          <div class="stop-text">
+            <p class="stop-dest">Negombo</p>
+            <p class="stop-hotel">Uga Riva &nbsp;·&nbsp; 2 Nights</p>
+            <p class="stop-tagline">Coastal arrival &amp; colonial heritage</p>
+          </div>
+        </li>
+        <li class="stop">
+          <div class="stop-num">02</div>
+          <div class="stop-text">
+            <p class="stop-dest">Anuradhapura &amp; Wilpattu</p>
+            <p class="stop-hotel">Uga Ulagalla &nbsp;·&nbsp; 3 Nights</p>
+            <p class="stop-tagline">Sacred ruins, leopards &amp; secret lakes</p>
+          </div>
+        </li>
+        <li class="stop">
+          <div class="stop-num">03</div>
+          <div class="stop-text">
+            <p class="stop-dest">Hatton</p>
+            <p class="stop-hotel">Uga Halloowella &nbsp;·&nbsp; 2 Nights</p>
+            <p class="stop-tagline">Highland tea estates &amp; colonial elegance</p>
+          </div>
+        </li>
+        <li class="stop">
+          <div class="stop-num">04</div>
+          <div class="stop-text">
+            <p class="stop-dest">Tangalle</p>
+            <p class="stop-hotel">Uga Prāva &nbsp;·&nbsp; 3 Nights</p>
+            <p class="stop-tagline">Private coastline &amp; barefoot seclusion</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="overview-collage">
+      <div class="collage-img">
+        <img src="images/Experiences.jpg" alt="Sri Lanka Experiences" loading="lazy" style="object-position: center 50%">
+      </div>
+      <div class="collage-img">
+        <img src="images/Junior Tea Planter & Factory Tour - Medium.jpg" alt="Tea Plantation Experience" loading="lazy" style="object-position: center 35%">
+      </div>
+      <div class="collage-img">
+        <img src="images/Yala LT IMG (30).JPG" alt="Leopard Sri Lanka" loading="lazy" style="object-position: center 40%">
+      </div>
+      <div class="collage-img">
+        <img src="images/wayfaress_ulagalla_kayak.jpg" alt="Kayaking Ulagalla" loading="lazy" style="object-position: center 30%">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Details Bar -->
+<div class="details-bar">
+  <div class="details-bar-item">
+    <span class="db-label">Duration</span>
+    <span class="db-value">11 Days · 10 Nights</span>
+  </div>
+  <div class="details-bar-item">
+    <span class="db-label">Transport</span>
+    <span class="db-value">Private Helicopter &amp; Chauffeured Car</span>
+  </div>
+  <div class="details-bar-item">
+    <span class="db-label">Properties</span>
+    <span class="db-value">Uga Escapes Collection</span>
+  </div>
+  <div class="details-bar-item">
+    <span class="db-label">Travel Style</span>
+    <span class="db-value">Ultra-Luxury · Private</span>
+  </div>
+</div>
+
+<!-- ── NEGOMBO ── -->
+<section class="day-section" id="negombo">
+  <div class="day-hero">
+    <img src="images/Negombo Beach.jpg" alt="Negombo Beach" loading="lazy" style="object-position: center 58%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Days 01 — 02</span>
+      <span class="day-loc">Negombo</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Arrival — Where the Ocean Welcomes You</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        Upon arrival in Sri Lanka, you are warmly welcomed by a representative of Destinova Journeys and escorted to the charming coastal town of Negombo. After your journey, unwind in the tranquil surroundings of Uga Riva, your boutique sanctuary by the sea. The rest of the day is yours to relax, recover, and ease into the island's gentle, unhurried rhythm.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        On Day 2, discover Negombo at leisure — a town often called "Little Rome" for its abundance of historic churches, a legacy of Portuguese and Dutch colonial rule. Visit the vibrant fish market at dawn, observe traditional catamarans gliding along the lagoon, and stroll through streets rich in architecture and local life. The Negombo Lagoon, dotted with fishing boats and fringed by mangroves, offers a serene and quintessentially Sri Lankan afternoon.
+      </p>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Private arrival transfer &amp; warm welcome</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Negombo colonial heritage &amp; fish market</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Lagoon exploration by traditional boat</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Two nights of coastal calm at Uga Riva</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Uga Riva</span></div>
+    <div class="accom-card"><span class="ac-label">Room</span><span class="ac-value">Deluxe</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Bed &amp; Breakfast</span></div>
+  </div>
+</section>
+
+<!-- ── ANURADHAPURA ── -->
+<section class="day-section" id="anuradhapura">
+  <div class="dual-hero">
+    <div class="dual-hero-panel">
+      <img src="images/Sri Lanka - Large1.jpg" alt="Anuradhapura" loading="lazy" style="object-position: center 45%">
+    </div>
+    <div class="dual-hero-panel">
+      <img src="images/Sri Lanka.JPG" alt="Wilpattu Leopard" loading="lazy" style="object-position: center 38%">
+    </div>
+    <div class="dual-hero-divider"></div>
+    <div class="dual-hero-label left">
+      <span class="day-num">Days 03 — 04</span>
+      <span class="day-loc">Anuradhapura</span>
+      <div class="day-loc-rule"></div>
+    </div>
+    <div class="dual-hero-label right">
+      <span class="day-num">Day 05</span>
+      <span class="day-loc">Wilpattu</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Sacred Ruins &amp; The Wild North</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        On Day 3, a breathtaking helicopter journey (approx. 50 minutes) transports you to Anuradhapura, where you are met and transferred to the exquisite Uga Ulagalla — a private sanctuary set within 58 acres of verdant paddy fields and tropical gardens. The afternoon is yours to settle in, cycle through the estate, or simply absorb the extraordinary tranquillity.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        Day 4 is devoted to the ancient city of Anuradhapura, a UNESCO World Heritage Site dating back over 2,000 years and among Asia's greatest archaeological wonders. Discover the towering Ruwanwelisaya and Jetavanaramaya stupas, ancient monastic complexes, and the sacred Sri Maha Bodhi — the oldest documented tree in the world, believed to be a cutting from the tree under which Buddha attained enlightenment.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        On Day 5, a leisurely morning gives way to an exhilarating private jeep safari in Wilpattu National Park — Sri Lanka's largest and most pristine wildlife reserve. Wilpattu's extraordinary "villus" (natural lakes) and dense jungle create the perfect habitat for elusive leopards, sloth bears, wild elephants, and a spectacular array of birdlife. The park's exceptional quietude makes every sighting feel truly intimate.
+      </p>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Helicopter arrival into the ancient north</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">UNESCO World Heritage guided tour</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Sri Maha Bodhi — the world's oldest tree</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Private leopard safari at Wilpattu</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Uga Ulagalla — 58-acre private estate</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Uga Ulagalla</span></div>
+    <div class="accom-card"><span class="ac-label">Room</span><span class="ac-value">Pool Villa</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Bed &amp; Breakfast</span></div>
+  </div>
+</section>
+
+<!-- ── HATTON ── -->
+<section class="day-section" id="hatton">
+  <div class="day-hero">
+    <img src="images/JWG_HighTea3_1057 (Copy).jpg" alt="Hatton High Tea" loading="lazy" style="object-position: center 68%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Days 06 — 07</span>
+      <span class="day-loc">Hatton · Hill Country</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Hatton — Tea, Mist &amp; the Highlands</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        On Day 6, a breathtaking helicopter journey to Hatton (approx. 45 minutes) reveals one of the island's most dramatic landscape transitions — from the dry ancient plains of the north to the cool, emerald highlands of Sri Lanka's tea country. Fly over cascading waterfalls, rolling plantations, and mist-veiled ridges before descending into the hills. Check into the elegant Uga Halloowella, set amidst working tea estates with sweeping mountain views.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        Day 7 is an immersion in Ceylon's legendary tea heritage. Visit a working plantation and factory where you will trace the journey from freshly plucked leaf to the perfectly brewed cup — meeting local tea pluckers, learning the art of grading, and gaining an intimate understanding of the craft that made Ceylon tea a byword for quality the world over. Return to Halloowella for a leisurely evening in the cool mountain air.
+      </p>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Helicopter over emerald highland scenery</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Working tea plantation &amp; factory visit</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">High tea on the estate lawns</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Planters Suite — all inclusive</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Uga Halloowella</span></div>
+    <div class="accom-card"><span class="ac-label">Room</span><span class="ac-value">Planters Suite</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">All Inclusive</span></div>
+  </div>
+</section>
+
+<!-- ── TANGALLE ── -->
+<section class="day-section" id="tangalle">
+  <div class="day-hero">
+    <img src="images/Stilt fishing.png" alt="Tangalle Stilt Fishing" loading="lazy" style="object-position: center 52%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Days 08 — 10</span>
+      <span class="day-loc">Tangalle · Southern Coast</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Tangalle — The Art of Doing Nothing</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        A final helicopter transfer (approx. 45 minutes) sweeps you from the cool highlands to the deep blue of the Indian Ocean, tracing the southern coastline as golden beaches and turquoise waters come into view. Check into the spectacular Uga Prāva — an intimate sanctuary perched above one of Sri Lanka's most beautiful and unspoilt stretches of coast.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        Three days of pure, barefoot luxury await. Surrender to the rhythm of the ocean, sink into pristine sands, and indulge in spa rituals designed to restore and replenish. Tangalle's raw, unhurried beauty — far from the tourist trail — is the perfect finale to a journey through the soul of Sri Lanka. Days here belong entirely to you.
+      </p>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Helicopter coastal arrival — highlands to sea</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Uga Prāva — private sanctuary by the ocean</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Pristine unspoilt southern beaches</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Three nights of complete coastal seclusion</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Uga Prāva</span></div>
+    <div class="accom-card"><span class="ac-label">Room</span><span class="ac-value">Heliconia Suite</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Half Board</span></div>
+  </div>
+</section>
+
+<!-- ── DEPARTURE ── -->
+<section class="day-section" id="departure">
+  <div class="day-hero">
+    <img src="images/DSC_7538.jpg" alt="Departure" loading="lazy" style="object-position: center 45%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Day 11</span>
+      <span class="day-loc">Departure</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Farewell — Until We Meet Again</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        Your final morning in Sri Lanka. After breakfast, a private helicopter transfer (approx. 40 minutes) carries you from the southern coast to the airport for your onward journey — offering one last aerial embrace of the island's extraordinary landscape: the golden coastline, the misty hills, the ancient north, all of it yours, one final time.
+      </p>
+      <p class="day-text" style="margin-top:16px; font-style:italic; color: var(--muted);">
+        "All good things must come to an end... until we meet again."
+      </p>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Private helicopter departure transfer</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Final aerial views of the southern coast</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Seamless onward journey coordination</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="pricing" id="pricing">
+  <div class="pricing-logo">
+    <img src="images/destinova-logo-cropped-tight.png" alt="Destinova Journeys">
+  </div>
+  <p class="pricing-eyebrow">Your Investment</p>
+  <div class="pricing-rule"></div>
+  <p class="pricing-per">Per person (twin share)</p>
+  <p class="pricing-main">US$ 16,134</p>
+  <p class="pricing-total">Total for two &nbsp;—&nbsp; US$ 32,268</p>
+
+  <div class="inclusions">
+    <p class="inc-title">What's Included</p>
+    <div class="inc-item"><div class="inc-dot"></div><p class="inc-text">All helicopter transfers (Negombo → Anuradhapura → Hatton → Tangalle → Airport)</p></div>
+    <div class="inc-item"><div class="inc-dot"></div><p class="inc-text">Private chauffeured ground transfers throughout</p></div>
+    <div class="inc-item"><div class="inc-dot"></div><p class="inc-text">Accommodation as specified — 10 nights</p></div>
+    <div class="inc-item"><div class="inc-dot"></div><p class="inc-text">Meals as per board basis per property</p></div>
+    <div class="inc-item"><div class="inc-dot"></div><p class="inc-text">Private jeep safari at Wilpattu National Park</p></div>
+    <div class="inc-item"><div class="inc-dot"></div><p class="inc-text">Guided cultural &amp; heritage experiences</p></div>
+    <div class="inc-item"><div class="inc-dot"></div><p class="inc-text">Dedicated Destinova Journeys concierge service</p></div>
+  </div>
+
+  <p class="pricing-note">
+    Cost based on 2 people travelling<br>
+    Rates are per person based on twin share occupancy<br>
+    International flights not included
+  </p>
+
+  <div class="contact-strip">
+    <span class="contact-cta">Begin Your Journey</span>
+    <p class="contact-name">Destinova Journeys</p>
+    <a href="mailto:Sriyantha@destinovajourneys.com" class="contact-email">Sriyantha@destinovajourneys.com</a>
+    <span class="contact-web">destinovajourneys.com</span>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="f-left">Destinova Journeys &nbsp;·&nbsp; Private Collection</span>
+  <span class="f-right">© 2026 &nbsp;·&nbsp; All rights reserved</span>
+</footer>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.day-section, .stop').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
