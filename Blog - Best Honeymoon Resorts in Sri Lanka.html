@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Best Honeymoon Resorts in Sri Lanka · Destinova Journeys</title>
+<meta name="description" content="From private beach villas on the south coast to mist-wrapped tea bungalows in the highlands, Sri Lanka is one of the world's great honeymoon destinations. These are the properties that do it beautifully.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1C2B3A;
+    --gold: #C5A05A;
+    --gold-light: #D4B576;
+    --cream: #F7F2EA;
+    --cream-dark: #EDE6D8;
+    --charcoal: #2E2E2E;
+    --white: #FDFBF8;
+    --text-muted: #7A7A72;
+    --border: rgba(197,160,90,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Montserrat', sans-serif; background: var(--white); color: var(--charcoal); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  .blog-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(28,43,58,0.97); backdrop-filter: blur(12px);
+    height: 72px; padding: 0 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(197,160,90,0.15);
+  }
+  .blog-nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 500; color: var(--white);
+    text-decoration: none; letter-spacing: 0.02em;
+  }
+  .blog-nav-logo span { color: var(--gold); }
+  .blog-nav-back {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    text-decoration: none; transition: opacity 0.3s;
+  }
+  .blog-nav-back:hover { opacity: 0.7; }
+  .blog-nav-category {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.25em;
+    text-transform: uppercase; color: rgba(255,255,255,0.45);
+  }
+
+  /* ── HERO ── */
+  .blog-hero {
+    height: 92vh; position: relative;
+    background: url('images/thewayfaress_5390835.jpg') center 35% / cover no-repeat;
+    display: flex; align-items: flex-end;
+  }
+  .blog-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(13,27,42,0.15) 0%, rgba(13,27,42,0.25) 40%, rgba(13,27,42,0.92) 100%);
+  }
+  .blog-hero-content {
+    position: relative; z-index: 2;
+    padding: 0 100px 80px; max-width: 880px;
+  }
+  .blog-hero-cat {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.35em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px; display: flex; align-items: center; gap: 14px;
+  }
+  .blog-hero-cat::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+  .blog-hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5.2vw, 62px);
+    font-weight: 400; line-height: 1.1;
+    color: var(--white); margin-bottom: 22px; letter-spacing: -0.01em;
+  }
+  .blog-hero-title em { font-style: italic; color: var(--gold-light); }
+  .blog-hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-style: italic; font-weight: 300;
+    color: rgba(255,255,255,0.78); line-height: 1.65;
+    margin-bottom: 34px; max-width: 620px;
+  }
+  .blog-hero-meta {
+    display: flex; align-items: center; gap: 28px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: rgba(255,255,255,0.45);
+  }
+  .blog-hero-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--gold); opacity: 0.6; }
+
+  /* ── ARTICLE ── */
+  .article-wrap {
+    max-width: 780px; margin: 0 auto;
+    padding: 90px 40px 110px;
+  }
+  .article-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px; font-weight: 300; font-style: italic;
+    line-height: 1.78; color: var(--navy);
+    margin-bottom: 52px; padding-bottom: 52px;
+    border-bottom: 1px solid var(--border);
+  }
+  .article-body p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; line-height: 1.88; color: var(--charcoal); margin-bottom: 28px;
+  }
+  .article-section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.38em;
+    text-transform: uppercase; color: var(--gold);
+    margin: 68px 0 16px; display: flex; align-items: center; gap: 14px;
+  }
+  .article-section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+  .article-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px; font-weight: 400; color: var(--navy);
+    line-height: 1.2; margin-bottom: 28px;
+  }
+  .article-h2 em { font-style: italic; color: var(--gold); }
+
+  /* Resort entry */
+  .resort-entry {
+    border-top: 1px solid var(--border);
+    padding-top: 64px; margin-top: 64px;
+  }
+  .resort-entry:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .resort-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    display: block; margin-bottom: 8px;
+  }
+  .resort-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 400; color: var(--navy);
+    line-height: 1.2; margin-bottom: 6px;
+  }
+  .resort-name em { font-style: italic; }
+  .resort-location {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+  .resort-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; line-height: 1.88; color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+
+  /* Highlights */
+  .resort-highlights {
+    display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 8px;
+  }
+  .resort-highlight-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--navy);
+    padding: 7px 16px; border: 1px solid var(--border);
+    background: var(--cream);
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    margin: 60px 0; padding: 44px 56px;
+    border-left: 3px solid var(--gold); background: var(--cream);
+  }
+  .pull-quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 27px; font-weight: 400; font-style: italic;
+    color: var(--navy); line-height: 1.55;
+  }
+  .pull-quote-text em { color: var(--gold); font-style: normal; }
+
+  /* Images */
+  .article-img-full {
+    margin: 56px -40px; height: 520px; overflow: hidden;
+  }
+  .article-img-full img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+  .article-img-full:hover img { transform: scale(1.025); }
+  .article-img-pair {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 52px 0;
+  }
+  .article-img-pair-item { height: 320px; overflow: hidden; }
+  .article-img-pair-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+  .article-img-pair-item:hover img { transform: scale(1.04); }
+  .article-img-single {
+    margin: 40px 0; height: 440px; overflow: hidden;
+  }
+  .article-img-single img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 30%;
+    transition: transform 0.7s ease;
+  }
+  .article-img-single:hover img { transform: scale(1.025); }
+  .article-img-tall {
+    margin: 40px 0; height: 600px; overflow: hidden;
+  }
+  .article-img-tall img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 20%;
+    transition: transform 0.7s ease;
+  }
+  .article-img-tall:hover img { transform: scale(1.02); }
+  .article-img-caption {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; color: var(--text-muted); letter-spacing: 0.12em;
+    text-transform: uppercase; margin-top: 14px; text-align: center;
+  }
+
+  /* Divider */
+  .article-divider {
+    display: flex; align-items: center; gap: 20px; margin: 70px 0;
+  }
+  .article-divider::before, .article-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+  .article-divider-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; color: var(--gold); opacity: 0.7;
+  }
+
+  /* Insider tip */
+  .insider-tip {
+    margin: 36px 0; padding: 28px 36px;
+    border: 1px solid var(--border); background: var(--cream);
+  }
+  .insider-tip-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+  }
+  .insider-tip-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17.5px; line-height: 1.78; color: var(--charcoal);
+  }
+
+  /* Region banner */
+  .region-banner {
+    background: var(--navy); padding: 32px 42px; margin: 72px 0 0;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .region-banner-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; font-weight: 600; letter-spacing: 0.35em;
+    text-transform: uppercase; color: var(--gold); white-space: nowrap;
+  }
+  .region-banner-rule { flex: 1; height: 1px; background: rgba(197,160,90,0.3); }
+  .region-banner-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 400; font-style: italic;
+    color: var(--white); white-space: nowrap;
+  }
+
+  /* CTA */
+  .article-cta {
+    margin-top: 90px; padding: 68px 52px;
+    background: var(--cream); text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  .article-cta-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+  }
+  .article-cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 400; color: var(--navy);
+    margin-bottom: 16px; line-height: 1.2;
+  }
+  .article-cta-title em { font-style: italic; }
+  .article-cta-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-style: italic; color: var(--text-muted);
+    margin-bottom: 38px; line-height: 1.75;
+    max-width: 540px; margin-left: auto; margin-right: auto;
+  }
+  .btn-primary {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; padding: 18px 44px;
+    background: var(--gold); color: var(--navy);
+    border: none; cursor: pointer; transition: all 0.35s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-ghost {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; padding: 17px 38px;
+    background: transparent; color: var(--navy);
+    border: 1px solid rgba(28,43,58,0.3); cursor: pointer;
+    transition: all 0.35s; text-decoration: none;
+    display: inline-block; margin-left: 14px;
+  }
+  .btn-ghost:hover { border-color: var(--navy); }
+
+  /* Footer */
+  .blog-footer {
+    background: #0d1b2a; padding: 34px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(197,160,90,0.12);
+  }
+  .blog-footer-copy {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.08em;
+  }
+  .blog-footer-back {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(197,160,90,0.65);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .blog-footer-back:hover { color: var(--gold); }
+
+  /* Mobile */
+  html, body { overflow-x: hidden; }
+  img { max-width: 100%; height: auto; }
+
+  @media (max-width: 768px) {
+    .blog-nav { padding: 0 20px; }
+    .blog-nav-category { display: none; }
+    .blog-hero { height: 85vh; min-height: 420px; }
+    .blog-hero-content { padding: 0 24px 52px; }
+    .blog-hero-title { font-size: clamp(28px, 8vw, 44px); line-height: 1.15; }
+    .blog-hero-subtitle { font-size: 18px; }
+    .blog-hero-meta { font-size: 10px; flex-wrap: wrap; gap: 8px; }
+    .article-wrap { padding: 48px 22px 72px; max-width: 100%; }
+    .article-intro { font-size: 20px; }
+    .article-img-full { margin: 36px -22px; height: 280px; width: calc(100% + 44px); }
+    .article-img-tall { height: 320px; margin: 32px 0; }
+    .article-img-pair { grid-template-columns: 1fr; gap: 12px; margin: 36px 0; }
+    .article-img-pair-item { height: 240px; }
+    .article-img-single { height: 260px; margin: 32px 0; }
+    .pull-quote { padding: 28px 22px; margin: 40px 0; }
+    .pull-quote-text { font-size: 21px; }
+    .region-banner { flex-direction: column; align-items: flex-start; gap: 12px; padding: 24px 22px; }
+    .region-banner-rule { display: none; }
+    .article-cta { padding: 44px 22px; }
+    .article-cta-title { font-size: 28px; }
+    .btn-primary, .btn-ghost { display: block; width: 100%; text-align: center; box-sizing: border-box; margin-left: 0 !important; margin-top: 12px; }
+    .blog-footer { flex-direction: column; gap: 14px; padding: 24px 20px; text-align: center; }
+    .resort-name { font-size: 26px; }
+  }
+
+  @media (max-width: 480px) {
+    .blog-hero-title { font-size: clamp(24px, 9vw, 34px); }
+    .article-wrap { padding: 36px 18px 60px; }
+    .insider-tip { padding: 20px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="blog-nav">
+  <a href="index.html" class="blog-nav-logo">Destin<span>ova</span> Journeys</a>
+  <span class="blog-nav-category">Sri Lanka · Honeymoons</span>
+  <a href="index.html#journal" class="blog-nav-back">← Journal</a>
+</nav>
+
+<!-- HERO -->
+<section class="blog-hero">
+  <div class="blog-hero-overlay"></div>
+  <div class="blog-hero-content">
+    <div class="blog-hero-cat">Honeymoons &amp; Romance</div>
+    <h1 class="blog-hero-title">The Best Honeymoon<br>Resorts in <em>Sri Lanka</em></h1>
+    <p class="blog-hero-subtitle">From private beach villas on the south coast to mist-wrapped tea bungalows high in the highlands — Sri Lanka is one of the world's most quietly extraordinary honeymoon destinations.</p>
+    <div class="blog-hero-meta">
+      <span>By Destinova Journeys</span>
+      <span class="blog-hero-meta-dot"></span>
+      <span>Sri Lanka</span>
+      <span class="blog-hero-meta-dot"></span>
+      <span>10 Resorts</span>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<main class="article-wrap">
+
+  <p class="article-intro">
+    Sri Lanka earns its place among the world's great honeymoon destinations not through a single iconic image, but through something rarer — genuine variety. A couple can wake up in a colonial tea bungalow at 4,000 feet, be on a leopard safari by the next morning, and watching the Indian Ocean turn gold from a clifftop infinity pool two days after that. The island is compact enough to move between worlds without long transfers, and its collection of intimate luxury properties is quietly exceptional. These ten know exactly how to make a honeymoon feel like something more than a holiday.
+  </p>
+
+  <div class="article-body">
+    <p>We have organised this guide by region, because where you stay in Sri Lanka shapes the entire character of your honeymoon. The south coast gives you warmth, beach, and intimate luxury. The hill country gives you cool air, silence, and an intoxicating sense of elevation above the world. The south-east offers the wildness of safari country alongside some of the most architecturally extraordinary places to stay in Asia. The most memorable honeymoons in Sri Lanka find a rhythm across two or three of these chapters — and the properties that anchor each one matter enormously.</p>
+  </div>
+
+  <!-- ─── SOUTH COAST ─── -->
+  <div class="region-banner">
+    <span class="region-banner-label">Region</span>
+    <div class="region-banner-rule"></div>
+    <span class="region-banner-name">The South Coast</span>
+  </div>
+
+  <!-- 01 Amanwella -->
+  <div class="resort-entry">
+    <span class="resort-num">01 · South Coast</span>
+    <h2 class="resort-name">Amanwella</h2>
+    <div class="resort-location">Tangalle · Aman Resorts</div>
+    <p class="resort-body">
+      Amanwella may be the most quietly perfect honeymoon hotel in all of Sri Lanka. Thirty suite villas cascade down a hillside above a crescent of private beach near Tangalle — each with its own infinity plunge pool, a shaded sun deck, and views across the Indian Ocean that do something useful to the nervous system. The Aman approach to hospitality — unhurried, immaculate, completely attuned to what guests need before they know they need it — suits a honeymoon more naturally than almost any other property on the island.
+    </p>
+    <p class="resort-body">
+      Suites 110 to 112 sit closest to the beach and offer the most seclusion. The beach itself is one of the south coast's most beautiful stretches — calm enough for swimming in season, dramatic enough at other times of year to make sitting with a glass of wine and watching the waves perfectly sufficient. Candlelit beach dinners can be arranged with a day's notice, and the spa offers couples treatments in an open-sided pavilion that makes the sound of the ocean part of the experience.
+    </p>
+    <div class="resort-highlights">
+      <span class="resort-highlight-tag">Private Infinity Pool Per Villa</span>
+      <span class="resort-highlight-tag">Secluded Beach Cove</span>
+      <span class="resort-highlight-tag">Couples Spa Pavilion</span>
+      <span class="resort-highlight-tag">Beach Dinner by Arrangement</span>
+      <span class="resort-highlight-tag">Aman Service</span>
+    </div>
+    <div class="article-img-single">
+      <img src="images/amanwella.png" alt="Amanwella resort pavilion, Tangalle, Sri Lanka" loading="lazy">
+      <p class="article-img-caption">Amanwella, Tangalle — thirty villas, one secluded beach, zero interruptions</p>
+    </div>
+    <div class="insider-tip">
+      <div class="insider-tip-label">Destinova Insider</div>
+      <p class="insider-tip-text">Amanwella's beach faces south-west, which means the sunset from your pool terrace is exactly what you imagine. Request a higher villa for the widest ocean panorama, or suites 110–112 if proximity to the beach matters more than the elevated view. We always pre-arrange the couples' spa and beach dinner as part of any honeymoon itinerary here.</p>
+    </div>
+  </div>
+
+  <!-- 02 Cape Weligama -->
+  <div class="resort-entry">
+    <span class="resort-num">02 · South Coast</span>
+    <h2 class="resort-name">Cape Weligama</h2>
+    <div class="resort-location">Weligama Bay · Relais &amp; Châteaux</div>
+    <p class="resort-body">
+      Cape Weligama sits high on a headland with panoramic views across Weligama Bay, and its suites and villas — many with private infinity pools that appear to hover directly above the sea — create the particular kind of suspended intimacy that a honeymoon calls for. The property was extensively renovated in 2025, and the result is a resort that has sharpened its already considerable sense of design without losing its warmth.
+    </p>
+    <p class="resort-body">
+      The cliffside infinity pool — half-moon shaped, edged with the Indian Ocean — is one of the most photographed spots in Sri Lanka for a reason: it genuinely looks the way it does in pictures. Couples can arrange private dinners on the pool terrace, on the cliff's edge, or in the herb garden, and the in-villa dining menu allows for complete privacy on evenings when the world outside feels unnecessary. The spa team is among the most skilled on the south coast, and the hotel's position between Galle and the east coast makes it a natural base for exploring either direction.
+    </p>
+    <div class="resort-highlights">
+      <span class="resort-highlight-tag">Clifftop Infinity Pool</span>
+      <span class="resort-highlight-tag">Private Pool Suites</span>
+      <span class="resort-highlight-tag">In-Villa Dining</span>
+      <span class="resort-highlight-tag">Cliff-Edge Private Dinner</span>
+      <span class="resort-highlight-tag">Couples Spa</span>
+    </div>
+    <div class="article-img-tall">
+      <img src="images/Cape Weligama - Large.jpg" alt="Cape Weligama resort, Weligama Bay, Sri Lanka" loading="lazy">
+      <p class="article-img-caption">Cape Weligama — where the Indian Ocean becomes your private view</p>
+    </div>
+  </div>
+
+  <!-- 03 Anantara Peace Haven -->
+  <div class="resort-entry">
+    <span class="resort-num">03 · South Coast</span>
+    <h2 class="resort-name">Anantara Peace Haven Tangalle</h2>
+    <div class="resort-location">Tangalle · Southern Province</div>
+    <p class="resort-body">
+      Anantara Peace Haven is a different proposition from Amanwella and Cape Weligama — broader in scale, with 32 private pool villas spread across 21 acres of coconut plantation directly above a secluded golden beach. Where the others feel intimate and almost hidden, Anantara feels spacious and generous, with a quality of light and open air that seems to lift the entire property.
+    </p>
+    <p class="resort-body">
+      The private pool villas are designed with honeymooners in mind: outdoor rain showers, private garden terraces, and plunge pools shaded by palms that have a specific kind of quiet that's hard to find anywhere else. The beach below — reached via a winding path through the coconut grove — is one of the south coast's most beautiful, with a sandbar that glows in the early morning. The spa offers an acclaimed couples' journey ritual using traditional Sri Lankan botanicals, and candlelit beach dinners can be arranged on the sand as the sun drops into the sea.
+    </p>
+    <div class="resort-highlights">
+      <span class="resort-highlight-tag">Private Pool Villas</span>
+      <span class="resort-highlight-tag">Beachfront Sunset Dinners</span>
+      <span class="resort-highlight-tag">Sri Lankan Couples Spa Ritual</span>
+      <span class="resort-highlight-tag">21-Acre Coconut Estate</span>
+      <span class="resort-highlight-tag">Outdoor Rain Showers</span>
+    </div>
+  </div>
+
+  <!-- 04 Amangalla -->
+  <div class="resort-entry">
+    <span class="resort-num">04 · South Coast</span>
+    <h2 class="resort-name">Amangalla</h2>
+    <div class="resort-location">Galle Fort · Aman Resorts</div>
+    <p class="resort-body">
+      Amangalla occupies a 17th-century Dutch colonial building at the heart of Galle Fort — a UNESCO World Heritage Site — and offers a form of romance that is entirely different from the other properties on this list. There is no beach. There is no pool perched above the ocean. What there is instead is one of the most historically resonant buildings in Asia, sensitively restored to a state of quiet grandeur: high ceilings, teak columns, a deep veranda overlooking the fort's cobbled streets, and a sense of being inside a story rather than simply staying in a hotel.
+    </p>
+    <p class="resort-body">
+      Galle Fort at dusk — when the tour groups have left and couples walk the ramparts in the golden hour, the Indian Ocean glittering below — is one of the most romantic settings in Sri Lanka. The hotel's Baths, originally built by the Dutch in 1684, have been transformed into an extraordinary spa that rivals anything on the island. For couples who want culture, history, and the particular atmosphere of a place that has held centuries of beauty, Amangalla offers something none of the beach resorts can match.
+    </p>
+    <div class="resort-highlights">
+      <span class="resort-highlight-tag">17th-Century Dutch Colonial Building</span>
+      <span class="resort-highlight-tag">Inside Galle Fort (UNESCO)</span>
+      <span class="resort-highlight-tag">Historic Baths Spa</span>
+      <span class="resort-highlight-tag">Fort Rampart Sunset Walks</span>
+      <span class="resort-highlight-tag">Aman Heritage Property</span>
+    </div>
+    <div class="insider-tip">
+      <div class="insider-tip-label">Destinova Insider</div>
+      <p class="insider-tip-text">Amangalla and Amanwella are just forty minutes apart, and we often pair them as the perfect south coast chapter — two or three nights inside the Fort for culture and history, then three nights at Amanwella for the beach and complete seclusion. Two very different kinds of romance, one seamless journey.</p>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    <p class="pull-quote-text">
+      "The best Sri Lanka honeymoons aren't built around one resort. They move through different moods — the <em>warmth of the coast</em>, the cool quiet of the hills, the wildness of the south-east — and find something irreplaceable in each."
+    </p>
+  </div>
+
+  <!-- ─── HILL COUNTRY ─── -->
+  <div class="region-banner">
+    <span class="region-banner-label">Region</span>
+    <div class="region-banner-rule"></div>
+    <span class="region-banner-name">The Hill Country</span>
+  </div>
+
+  <!-- 05 Ceylon Tea Trails -->
+  <div class="resort-entry">
+    <span class="resort-num">05 · Hill Country</span>
+    <h2 class="resort-name">Ceylon Tea Trails</h2>
+    <div class="resort-location">Hatton · Dilmah Collection</div>
+    <p class="resort-body">
+      Ceylon Tea Trails is not one property but a collection of five restored colonial-era tea planter's bungalows set among the tea estates of Hatton — each sitting on its own hillside, each sleeping a small number of guests, and each staffed by a butler and a dedicated cook who will prepare anything you ask. The concept is simple and brilliant: the entire bungalow is yours, and nothing in it belongs to anyone else for the duration of your stay.
+    </p>
+    <p class="resort-body">
+      Tientsin Bungalow is the jewel for honeymooners — its heated Jacuzzi on the terrace, positioned to look out over rows of tea through rising mist, is among the most quietly extraordinary things a couple can sit in together anywhere in the world. Castlereagh Bungalow offers lake views and one of the most beautifully proportioned colonialtakerace verandas on the estate. Days here have a particular quality: a slow walk through the estate in the early morning, high tea on the veranda in the afternoon, a wood fire crackling in the sitting room as the temperature drops after dark. Time moves at a different pace in the hills, and Tea Trails lets you inhabit it completely.
+    </p>
+    <div class="resort-highlights">
+      <span class="resort-highlight-tag">Exclusive-Use Bungalows</span>
+      <span class="resort-highlight-tag">Private Butler & Cook</span>
+      <span class="resort-highlight-tag">Heated Terrace Jacuzzi (Tientsin)</span>
+      <span class="resort-highlight-tag">Working Tea Estate</span>
+      <span class="resort-highlight-tag">High Tea on the Veranda</span>
+    </div>
+    <div class="article-img-pair">
+      <div class="article-img-pair-item">
+        <img src="images/Tientsin Bungalow -   Heated Jacuzzi - Large.jpg" alt="Tientsin Bungalow heated Jacuzzi, Ceylon Tea Trails" loading="lazy">
+      </div>
+      <div class="article-img-pair-item">
+        <img src="images/Castlereagh Bungalow - Palmer Garden Suite - Large.jpg" alt="Castlereagh Bungalow, Ceylon Tea Trails" loading="lazy">
+      </div>
+    </div>
+    <p class="article-img-caption">Tientsin Bungalow's heated Jacuzzi and Castlereagh Bungalow — Ceylon Tea Trails</p>
+    <div class="insider-tip">
+      <div class="insider-tip-label">Destinova Insider</div>
+      <p class="insider-tip-text">Tientsin is the most in-demand bungalow for honeymooners and books out months in advance during the peak November–March season. We advise securing this as one of the first things we confirm when building a hill country itinerary. A minimum of three nights does the elevation justice — two feels rushed once you've felt the pace of the hills.</p>
+    </div>
+  </div>
+
+  <!-- 06 Thotalagala -->
+  <div class="resort-entry">
+    <span class="resort-num">06 · Hill Country</span>
+    <h2 class="resort-name">Thotalagala</h2>
+    <div class="resort-location">Haputale · Southern Highlands</div>
+    <p class="resort-body">
+      Thotalagala occupies a 19th-century tea planter's bungalow on a ridge above Haputale, at an elevation where clouds drift through the gardens on some mornings and the view on clear days stretches to the southern coast eighty kilometres away. It is one of Sri Lanka's smallest luxury properties — seven suites in a single colonial house — and its intimacy is its great virtue.
+    </p>
+    <p class="resort-body">
+      The original architecture has been preserved with care: working fireplaces, period furnishings, wide verandas with cane chairs, and a garden that grows food for the kitchen. Days at Thotalagala are shaped by unhurried pleasures — walks through the Dambatenne Tea Estate, afternoon high tea delivered to wherever on the property you've settled, candlelit dinners in the dining room that feel genuinely private in a way that larger hotels cannot replicate. The infinity pool, positioned to face the view, is the kind of place where time stops making demands. For couples drawn to old-world elegance and the particular serenity of very high places, there is nowhere quite like it.
+    </p>
+    <div class="resort-highlights">
+      <span class="resort-highlight-tag">7-Suite Colonial Bungalow</span>
+      <span class="resort-highlight-tag">Working Fireplaces</span>
+      <span class="resort-highlight-tag">Infinity Pool with Panoramic View</span>
+      <span class="resort-highlight-tag">Dambatenne Estate Walks</span>
+      <span class="resort-highlight-tag">Private Candlelit Dining</span>
+    </div>
+    <div class="article-img-single">
+      <img src="images/Thotalagala.jpg" alt="Thotalagala bungalow, Haputale, Sri Lanka" loading="lazy" style="object-position: center 48%;">
+      <p class="article-img-caption">Thotalagala — a colonial ridge at 4,500 feet with an 80-kilometre view</p>
+    </div>
+  </div>
+
+  <div class="article-divider"><span class="article-divider-mark">✦</span></div>
+
+  <!-- ─── SOUTH EAST ─── -->
+  <div class="region-banner">
+    <span class="region-banner-label">Region</span>
+    <div class="region-banner-rule"></div>
+    <span class="region-banner-name">The South East &amp; Yala</span>
+  </div>
+
+  <!-- 07 Chena Huts -->
+  <div class="resort-entry">
+    <span class="resort-num">07 · South East</span>
+    <h2 class="resort-name">Uga Chena Huts</h2>
+    <div class="resort-location">Yala · Uga Escapes Collection</div>
+    <p class="resort-body">
+      A honeymoon at Chena Huts is not for couples seeking the expected — it is for those who want their first weeks of marriage to begin with something genuinely wild. The fourteen private cabins sit on seven acres bordering Yala National Park, each with its own plunge pool and a completely unobstructed view of the bush. At night, the only light comes from the stars and the candles your butler has arranged; in the early morning, the only sound is the park waking up around you.
+    </p>
+    <p class="resort-body">
+      Morning game drives into Yala with the resident naturalist guides are the centrepiece, and the sightings — leopards resting in the dappled light of fig trees, elephants crossing the track in single file, crocodiles slipping from the bank into still water — carry the particular charge of things seen in genuine wilderness. Evenings at Chena Huts have their own ritual: sundowners on the private deck, dinner arranged under the stars with candles pushed back into the sand, and a sky so clear you forget what light pollution is. It is the most unexpected kind of romance, and it stays with couples long after the plunge pool and the south coast hotels have merged in memory.
+    </p>
+    <div class="resort-highlights">
+      <span class="resort-highlight-tag">Private Plunge Pool Per Cabin</span>
+      <span class="resort-highlight-tag">Yala Leopard Country</span>
+      <span class="resort-highlight-tag">Starlit Outdoor Dinners</span>
+      <span class="resort-highlight-tag">Expert Naturalist Guides</span>
+      <span class="resort-highlight-tag">Bush Sundowners</span>
+    </div>
+  </div>
+
+  <!-- 08 Wild Coast Tented Lodge -->
+  <div class="resort-entry">
+    <span class="resort-num">08 · South East</span>
+    <h2 class="resort-name">Wild Coast Tented Lodge</h2>
+    <div class="resort-location">Kumana · Resplendent Ceylon</div>
+    <p class="resort-body">
+      Wild Coast Tented Lodge sits where the wilderness meets the Indian Ocean — in the remote south-east near Kumana National Park, where a long, wild beach runs beside untouched jungle. The sculptural cocoon tents, each with its own private plunge pool, are among the most visually arresting places to stay in Asia: designed to nestle into the landscape rather than impose upon it, they create an atmosphere of elegant seclusion that is difficult to describe and impossible to forget.
+    </p>
+    <p class="resort-body">
+      Wild elephants move through the property at night — not as a curated safari experience but as a natural fact of life in this part of Sri Lanka. Morning beach walks, guided wildlife expeditions into Kumana, and evenings that begin with drinks on the deck and end with dinner by candlelight combine into a honeymoon experience that feels both genuinely adventurous and deeply comfortable. The beach at first light — empty, wide, the ocean moving through shades of blue and silver — is the kind of thing you photograph and then put the camera down for.
+    </p>
+    <div class="resort-highlights">
+      <span class="resort-highlight-tag">Cocoon Tent with Private Pool</span>
+      <span class="resort-highlight-tag">Beachfront Wilderness</span>
+      <span class="resort-highlight-tag">Wild Elephants on Property</span>
+      <span class="resort-highlight-tag">Kumana National Park</span>
+      <span class="resort-highlight-tag">Private Beach Dining</span>
+    </div>
+    <div class="insider-tip">
+      <div class="insider-tip-label">Destinova Insider</div>
+      <p class="insider-tip-text">Chena Huts and Wild Coast pair beautifully as a south-east safari chapter — three nights at each gives you leopard country and ocean wilderness in a single seamless stretch. We often place this before the hill country segment, so the honeymoon moves from wildness to elevation and ends on the south coast with beach and complete luxury. The sequence matters.</p>
+    </div>
+  </div>
+
+  <!-- ─── CULTURAL TRIANGLE ─── -->
+  <div class="region-banner">
+    <span class="region-banner-label">Region</span>
+    <div class="region-banner-rule"></div>
+    <span class="region-banner-name">The Cultural Heartland</span>
+  </div>
+
+  <!-- 09 Uga Ulagalla -->
+  <div class="resort-entry">
+    <span class="resort-num">09 · Cultural Heartland</span>
+    <h2 class="resort-name">Uga Ulagalla</h2>
+    <div class="resort-location">Near Anuradhapura · Uga Escapes Collection</div>
+    <p class="resort-body">
+      Uga Ulagalla is a 58-acre estate of ancient paddy fields, wetlands, and jungle, set among the ruins and sacred lakes of the cultural triangle. The 25 villas — some with private plunge pools, several with two bedrooms and garden terraces — are scattered across the grounds with such care that it is possible to walk an entire morning on the property and never encounter another guest. It is one of Sri Lanka's most genuinely remote luxury experiences, and for honeymooners who want depth over spectacle, it offers something irreplaceable.
+    </p>
+    <p class="resort-body">
+      The 150-year-old manor house at the centre of the estate serves as the dining room — its thick-walled interiors, candlelit tables, and views across the paddy fields create the setting for the kind of dinner that a honeymoon remembers. Anuradhapura and Polonnaruwa — two of the most important ancient cities in Asia — are within easy reach, and the team at Ulagalla understands how to present them to couples who are more interested in beauty and atmosphere than in archaeological detail. Dawn at Anuradhapura, with the pale stone of the dagobas turning gold before anyone else arrives, is one of the most quietly extraordinary experiences the island offers.
+    </p>
+    <div class="resort-highlights">
+      <span class="resort-highlight-tag">Private Pool Villas</span>
+      <span class="resort-highlight-tag">150-Year-Old Manor Dining</span>
+      <span class="resort-highlight-tag">58-Acre Estate</span>
+      <span class="resort-highlight-tag">Anuradhapura Dawn Visits</span>
+      <span class="resort-highlight-tag">Paddy Field Views</span>
+    </div>
+  </div>
+
+  <!-- 10 Jetwing Lighthouse -->
+  <div class="resort-entry">
+    <span class="resort-num">10 · South Coast</span>
+    <h2 class="resort-name">Jetwing Lighthouse</h2>
+    <div class="resort-location">Galle · Geoffrey Bawa Architecture</div>
+    <p class="resort-body">
+      Jetwing Lighthouse earns its place on this list not because it is the most intimate or remote property in Sri Lanka, but because it is one of the most genuinely beautiful — designed by Geoffrey Bawa, Sri Lanka's greatest architect, and positioned on a rocky promontory between the Indian Ocean and Galle's lagoon where the light does something that photography consistently fails to capture. For couples with an appreciation for design, it is a destination in itself.
+    </p>
+    <p class="resort-body">
+      Ocean-facing suites with wide balconies and the sound of the sea as a constant companion set the tone. The hotel's signature staircase — a dramatic spiral of stone that Bawa designed to echo a lighthouse's interior — and the way the building opens itself to ocean breezes rather than sealing against them create a sensory experience that stays in memory. Galle Fort is minutes away; whale watching — humpbacks and blue whales are common off the south coast from November to April — can be arranged through the hotel. For honeymooners who combine a love of architecture with a taste for southern Sri Lanka's wild and beautiful coast, this is the natural choice.
+    </p>
+    <div class="resort-highlights">
+      <span class="resort-highlight-tag">Geoffrey Bawa Architecture</span>
+      <span class="resort-highlight-tag">Ocean-Facing Suites</span>
+      <span class="resort-highlight-tag">Whale Watching</span>
+      <span class="resort-highlight-tag">Galle Fort Access</span>
+      <span class="resort-highlight-tag">Rocky Promontory Setting</span>
+    </div>
+  </div>
+
+  <div class="article-divider"><span class="article-divider-mark">✦</span></div>
+
+  <!-- Planning -->
+  <div class="article-body">
+    <div class="article-section-label">Planning Your Honeymoon</div>
+    <h2 class="article-h2">How to Build a Sri Lanka <em>Honeymoon</em></h2>
+    <p>The most rewarding Sri Lanka honeymoons are built around a rhythm, not a list of properties. A classic two-week structure might begin on the south coast — two nights at Amangalla inside Galle Fort, then four nights at Amanwella or Cape Weligama — before moving to the south-east for three nights at Chena Huts, up to the hill country for three nights at Tea Trails' Tientsin Bungalow, and back down to Colombo. That is five chapters, five completely different moods, and the sense of a country genuinely explored rather than photographed through a resort fence.</p>
+    <p>The best months for south coast and hill country are broadly November through March, when conditions are reliably dry and the south-west monsoon has retreated. The east coast and south-east open through May to September. Sri Lanka's year-round viability means that unlike many Indian Ocean destinations, a mid-year honeymoon can be just as rewarding as a December one — it simply requires knowing which region to prioritise. This is exactly the kind of detail that makes the difference between a honeymoon that works and one that is magnificent.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="article-cta">
+    <div class="article-cta-label">Begin Your Honeymoon Journey</div>
+    <h2 class="article-cta-title">Let us design your<br><em>Sri Lanka honeymoon</em></h2>
+    <p class="article-cta-text">Every couple travels differently. We'll build an itinerary around the pace, the mood, and the moments that matter most to you — from the right properties to the right time of year.</p>
+    <a href="mailto:ceylontraveldesigners@gmail.com?subject=Honeymoon%20Sri%20Lanka%20Enquiry" class="btn-primary">Start Planning</a>
+    <a href="index.html#sri-lanka" class="btn-ghost">Explore Sri Lanka</a>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="blog-footer">
+  <span class="blog-footer-copy">© 2025 Destinova Journeys · All Rights Reserved</span>
+  <a href="index.html#journal" class="blog-footer-back">← Back to Journal</a>
+</footer>
+
+</body>
+</html>
