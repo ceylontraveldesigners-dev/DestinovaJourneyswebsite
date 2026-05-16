@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Honeymoon in Ceylon — Destinova Journeys Private Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #1C2B3A;
+    --navy-l:  #243447;
+    --gold:    #C5A05A;
+    --gold-l:  #D4B576;
+    --cream:   #F7F2EA;
+    --cream-d: #EDE6D8;
+    --sage:    #5C6B52;
+    --charcoal:#2E2E2E;
+    --white:   #FDFBF8;
+    --muted:   #7A7A72;
+    --border:  rgba(197,160,90,0.22);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--cream); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 56px; height: 80px;
+    background: transparent;
+    transition: background 0.4s, height 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(28,43,58,0.96);
+    backdrop-filter: blur(14px);
+    height: 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo img { height: 48px; filter: brightness(0) invert(1); }
+  .nav-links { display:flex; gap:36px; list-style:none; }
+  .nav-links a {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(255,255,255,0.82);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── COVER ── */
+  .cover {
+    position: relative; height: 100vh; min-height: 700px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .cover-bg {
+    position: absolute; inset: 0;
+    background-image: url('images/DJI_20251014084600_0843_D.jpg');
+    background-size: cover; background-position: center 95%;
+    transform: scale(1.04);
+    animation: zoomSlow 18s ease-out forwards;
+  }
+  @keyframes zoomSlow { to { transform: scale(1); } }
+  .cover-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(28,43,58,0.15) 0%,
+      rgba(28,43,58,0.30) 40%,
+      rgba(28,43,58,0.72) 100%
+    );
+  }
+  .cover-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    animation: fadeUp 1.4s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(28px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+  .cover-eyebrow {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
+    animation: fadeUp 1.4s 0.2s ease both;
+  }
+  .cover-rule {
+    width: 48px; height: 1px; background: var(--gold);
+    margin: 0 auto 22px; opacity: 0.8;
+    animation: fadeUp 1.4s 0.3s ease both;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 8vw, 82px);
+    font-weight: 400; font-style: italic;
+    color: var(--white); line-height: 1.1;
+    margin-bottom: 18px;
+    animation: fadeUp 1.4s 0.4s ease both;
+  }
+  .cover-destinations {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; letter-spacing: 0.12em;
+    color: var(--gold-l); margin-bottom: 16px;
+    animation: fadeUp 1.4s 0.5s ease both;
+  }
+  .cover-meta {
+    font-size: 9px; font-weight: 500; letter-spacing: 0.28em;
+    text-transform: uppercase; color: rgba(253,251,248,0.75);
+    animation: fadeUp 1.4s 0.6s ease both;
+  }
+  .cover-bottom {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 28px 56px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    z-index: 2;
+  }
+  .cover-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 13px;
+    color: rgba(253,251,248,0.6);
+  }
+  .cover-date {
+    font-size: 8px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .scroll-hint {
+    position: absolute; bottom: 68px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    gap: 8px; z-index: 2; opacity: 0.6;
+    animation: fadeUp 2s 1.2s ease both;
+  }
+  .scroll-hint span {
+    font-size: 8px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--white);
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--white), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+  @keyframes scrollPulse {
+    0%,100% { opacity:0.4; } 50% { opacity:1; }
+  }
+
+  /* ── OVERVIEW ── */
+  .overview {
+    background: var(--cream);
+    padding: 100px 56px 80px;
+  }
+  .overview-inner {
+    max-width: 1160px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 340px;
+    gap: 80px; align-items: start;
+  }
+  .section-tag {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 400; font-style: italic;
+    color: var(--navy); line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .section-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .gold-rule {
+    width: 56px; height: 1px;
+    background: var(--gold); margin-bottom: 28px;
+  }
+  .overview-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; line-height: 1.85;
+    color: var(--charcoal); margin-bottom: 48px;
+  }
+  .stops { list-style: none; position: relative; }
+  .stops::before {
+    content: ''; position: absolute;
+    left: 20px; top: 28px; bottom: 28px; width: 1px;
+    background: linear-gradient(to bottom, var(--gold) 0%, rgba(197,160,90,0.1) 100%);
+  }
+  .stop {
+    display: flex; gap: 24px; align-items: flex-start;
+    padding-bottom: 28px; position: relative;
+    opacity: 0; transform: translateX(-16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .stop.visible { opacity:1; transform:none; }
+  .stop-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--navy); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 600; color: var(--gold);
+    letter-spacing: 0.05em; position: relative; z-index: 1;
+  }
+  .stop-text { padding-top: 6px; }
+  .stop-dest {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; color: var(--navy); margin-bottom: 4px;
+  }
+  .stop-hotel {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 13px;
+    color: var(--gold); margin-bottom: 4px;
+  }
+  .stop-tagline {
+    font-size: 11px; color: var(--muted); letter-spacing: 0.02em;
+  }
+  .overview-collage {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 8px; position: sticky; top: 100px;
+  }
+  .collage-img {
+    aspect-ratio: 1/1; overflow: hidden; position: relative;
+  }
+  .collage-img:first-child {
+    grid-column: 1 / -1; aspect-ratio: 16/9;
+  }
+  .collage-img img {
+    width:100%; height:100%; object-fit:cover;
+    transition: transform 0.6s ease;
+  }
+  .collage-img:hover img { transform: scale(1.04); }
+  .collage-img::after {
+    content: ''; position: absolute; inset: 0;
+    border: 1px solid rgba(197,160,90,0.25);
+    pointer-events: none;
+  }
+
+  /* ── DETAILS BAR ── */
+  .details-bar {
+    background: var(--navy);
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    padding: 28px 56px;
+  }
+  .details-bar-item { padding: 0 16px; }
+  .details-bar-item:not(:last-child) {
+    border-right: 1px solid rgba(197,160,90,0.15);
+  }
+  .db-label {
+    font-size: 8px; font-weight: 600; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 6px; display: block;
+  }
+  .db-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px; color: var(--white);
+  }
+
+  /* ── DESTINATION SECTIONS ── */
+  .day-section {
+    background: var(--white);
+    border-bottom: 1px solid rgba(197,160,90,0.1);
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .day-section.visible { opacity:1; transform:none; }
+
+  /* Single hero */
+  .day-hero {
+    position: relative; height: 52vh; min-height: 380px;
+    overflow: hidden;
+  }
+  .day-hero img {
+    width:100%; height:100%; object-fit:cover;
+    object-position: center center;
+    transition: transform 8s ease;
+  }
+  .day-section.visible .day-hero img { transform: scale(1.03); }
+  .day-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(28,43,58,0.75) 0%,
+      rgba(28,43,58,0.05) 60%
+    );
+  }
+
+  /* Split dual hero */
+  .dual-hero {
+    position: relative; height: 52vh; min-height: 380px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+  .dual-hero-panel {
+    position: relative; overflow: hidden;
+  }
+  .dual-hero-panel img {
+    width:100%; height:100%; object-fit:cover;
+    transition: transform 8s ease;
+  }
+  .day-section.visible .dual-hero-panel img { transform: scale(1.03); }
+  .dual-hero-panel::after {
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(to top, rgba(28,43,58,0.65) 0%, transparent 55%);
+  }
+  .dual-hero-divider {
+    position: absolute; top: 0; bottom: 0;
+    left: 50%; width: 2px;
+    background: linear-gradient(to bottom, transparent, rgba(197,160,90,0.6), transparent);
+    z-index: 3;
+  }
+  .dual-hero-label {
+    position: absolute; bottom: 28px; z-index: 4;
+  }
+  .dual-hero-label.left { left: 40px; }
+  .dual-hero-label.right { left: calc(50% + 40px); }
+
+  .day-hero-label {
+    position: absolute; bottom: 28px; left: 56px; z-index: 2;
+  }
+  .day-num {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 6px; display: block;
+  }
+  .day-loc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 18px;
+    color: var(--white); display: block;
+  }
+  .day-loc-rule {
+    width: 40px; height: 1px;
+    background: rgba(197,160,90,0.7); margin-top: 8px;
+  }
+
+  /* Day body */
+  .day-body {
+    display: grid; grid-template-columns: 1fr 280px;
+    gap: 56px; padding: 52px 56px 40px;
+    max-width: 1160px; margin: 0 auto;
+  }
+  .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 400; font-style: italic;
+    color: var(--navy); margin-bottom: 14px; line-height: 1.2;
+  }
+  .day-gold-rule {
+    width: 80px; height: 1px; background: var(--gold); margin-bottom: 22px;
+  }
+  .day-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; line-height: 1.9; color: var(--charcoal);
+  }
+  .day-text + .day-text { margin-top: 16px; }
+
+  /* Single extra image */
+  .day-extra-img {
+    margin-top: 24px; overflow: hidden; position: relative;
+  }
+  .day-extra-img img {
+    width:100%; aspect-ratio:4/3; object-fit:cover;
+    display:block; transition: transform 0.5s;
+  }
+  .day-extra-img:hover img { transform: scale(1.03); }
+  .day-extra-img::after {
+    content:''; position:absolute; inset:0;
+    border:1px solid rgba(197,160,90,0.3); pointer-events:none;
+  }
+
+  /* Two-image row */
+  .day-img-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px; margin-top: 24px;
+  }
+  .day-img-row-item {
+    overflow: hidden; position: relative;
+  }
+  .day-img-row-item img {
+    width:100%; aspect-ratio:4/3; object-fit:cover;
+    display:block; transition: transform 0.5s;
+  }
+  .day-img-row-item:hover img { transform: scale(1.03); }
+  .day-img-row-item::after {
+    content:''; position:absolute; inset:0;
+    border:1px solid rgba(197,160,90,0.3); pointer-events:none;
+  }
+
+  /* Three-image row */
+  .day-img-trio {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px; margin-top: 24px;
+  }
+  .day-img-trio-item {
+    overflow: hidden; position: relative;
+  }
+  .day-img-trio-item img {
+    width:100%; aspect-ratio:1/1; object-fit:cover;
+    display:block; transition: transform 0.5s;
+  }
+  .day-img-trio-item:hover img { transform: scale(1.03); }
+  .day-img-trio-item::after {
+    content:''; position:absolute; inset:0;
+    border:1px solid rgba(197,160,90,0.3); pointer-events:none;
+  }
+
+  /* Highlights */
+  .day-highlights { padding-top: 6px; }
+  .highlights-label {
+    font-size: 8px; font-weight: 600; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px; display: block;
+  }
+  .highlight-item {
+    display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;
+  }
+  .hi-diamond { color: var(--gold); font-size: 7px; margin-top: 4px; flex-shrink: 0; }
+  .hi-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 14px; color: var(--muted); line-height: 1.6;
+  }
+
+  /* Accom strip */
+  .accom-strip {
+    display: flex; gap: 12px; padding: 0 56px 40px;
+    max-width: 1160px; margin: 0 auto;
+  }
+  .accom-card {
+    background: var(--navy-l); padding: 14px 20px; flex: 1; min-width: 140px;
+  }
+  .ac-label {
+    font-size: 7px; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 6px; display: block;
+  }
+  .ac-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 14px; color: var(--white);
+  }
+
+  /* ── ENQUIRE SECTION ── */
+  .pricing {
+    background: var(--navy);
+    padding: 100px 56px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .pricing::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(197,160,90,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .pricing-logo { margin-bottom: 32px; }
+  .pricing-logo img { height: 90px; filter: brightness(0) invert(1); opacity: 0.9; }
+  .pricing-rule { width: 60px; height: 1px; background: var(--gold); margin: 0 auto 32px; opacity: 0.6; }
+  .contact-strip {
+    border-top: 1px solid rgba(197,160,90,0.2); padding-top: 40px;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .contact-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 20px; color: var(--white);
+  }
+  .contact-email {
+    font-size: 11px; color: var(--muted); text-decoration: none; transition: color 0.3s;
+  }
+  .contact-email:hover { color: var(--gold); }
+  .contact-web { font-size: 10px; color: rgba(197,160,90,0.5); letter-spacing: 0.08em; }
+  .enquire-btn {
+    display: inline-block;
+    padding: 18px 56px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.28em;
+    text-transform: uppercase; text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+    margin-bottom: 56px;
+  }
+  .enquire-btn:hover { background: var(--gold); color: var(--navy); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-l); padding: 22px 56px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(197,160,90,0.15);
+  }
+  footer .f-left { font-size: 9px; letter-spacing: 0.15em; color: rgba(122,122,114,0.6); text-transform: uppercase; }
+  footer .f-right { font-size: 9px; color: rgba(197,160,90,0.4); letter-spacing: 0.1em; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .overview, .pricing { padding: 72px 24px 60px; }
+    .overview-inner { grid-template-columns: 1fr; gap: 48px; }
+    .overview-collage { position: static; }
+    .day-body { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px 28px; }
+    .accom-strip { flex-wrap: wrap; padding: 0 24px 32px; }
+    .day-hero-label { left: 24px; }
+    .dual-hero { grid-template-columns: 1fr; height: auto; }
+    .dual-hero-panel { height: 260px; }
+    .dual-hero-label.right { left: 24px; bottom: 28px; }
+    .dual-hero-divider { display: none; }
+    .details-bar { grid-template-columns: 1fr 1fr; padding: 24px; gap: 20px; }
+    .details-bar-item { border-right: none; padding: 0; }
+    .cover-bottom { padding: 20px 24px; }
+    footer { padding: 18px 24px; flex-direction: column; gap: 8px; text-align: center; }
+    .day-img-row { grid-template-columns: 1fr; }
+    .day-img-trio { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="main-nav">
+  <div class="nav-logo">
+    <img src="images/destinova-logo-cropped-tight.png" alt="Destinova Journeys">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#arrival">Itinerary</a></li>
+    <li><a href="#enquire">Enquire</a></li>
+  </ul>
+</nav>
+
+<!-- ── COVER ── -->
+<section class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-overlay"></div>
+  <div class="cover-content">
+    <span class="cover-eyebrow">Eliot &amp; Leana &nbsp;·&nbsp; Destinova Journeys</span>
+    <div class="cover-rule"></div>
+    <h1 class="cover-title">A Honeymoon in Ceylon</h1>
+    <p class="cover-destinations">Sigiriya &nbsp;·&nbsp; Kandy &nbsp;·&nbsp; Haputale &nbsp;·&nbsp; Yala &nbsp;·&nbsp; South Coast</p>
+    <p class="cover-meta">14 Days &nbsp;·&nbsp; A Private Journey &nbsp;·&nbsp; Sri Lanka</p>
+  </div>
+  <div class="scroll-hint">
+    <span>Discover</span>
+    <div class="scroll-line"></div>
+  </div>
+  <div class="cover-bottom">
+    <span class="cover-tag">Curated exclusively for you</span>
+    <span class="cover-date">Private Collection · 2026</span>
+  </div>
+</section>
+
+<!-- ── OVERVIEW ── -->
+<section class="overview" id="overview">
+  <div class="overview-inner">
+    <div class="overview-left">
+      <span class="section-tag">Your Journey</span>
+      <h2 class="section-title">An Island Made for Two</h2>
+      <p class="section-sub">Fourteen Days Through the Heart of Sri Lanka</p>
+      <div class="gold-rule"></div>
+      <p class="overview-intro">
+        From the drama of Sigiriya's ancient rock fortress and the living rhythms of a village lake, through the sacred city of Kandy, the misty tea-scented hills of Haputale, the wild leopard country of Yala, and finally to the soft sands of the south coast — this fourteen-day honeymoon journey has been designed to show you Sri Lanka as it truly is: warm, extraordinary, and utterly unlike anywhere else. Every moment curated by Destinova Journeys, every detail arranged so that nothing stands between you and the island's soul.
+      </p>
+      <ul class="stops">
+        <li class="stop">
+          <div class="stop-num">01</div>
+          <div class="stop-text">
+            <p class="stop-dest">Arrival</p>
+            <p class="stop-hotel">Wathura Resort &amp; Spa &nbsp;·&nbsp; 1 Night</p>
+            <p class="stop-tagline">Coastal welcome &amp; gentle first steps</p>
+          </div>
+        </li>
+        <li class="stop">
+          <div class="stop-num">02</div>
+          <div class="stop-text">
+            <p class="stop-dest">Sigiriya · Cultural Triangle</p>
+            <p class="stop-hotel">Lake Lodge Kandalama &nbsp;·&nbsp; 2 Nights</p>
+            <p class="stop-tagline">Rock fortress, village canoe &amp; rural life</p>
+          </div>
+        </li>
+        <li class="stop">
+          <div class="stop-num">03</div>
+          <div class="stop-text">
+            <p class="stop-dest">Kandy</p>
+            <p class="stop-hotel">Hanthana Boutique &nbsp;·&nbsp; 2 Nights</p>
+            <p class="stop-tagline">Sacred temples &amp; the cultural heart of Ceylon</p>
+          </div>
+        </li>
+        <li class="stop">
+          <div class="stop-num">04</div>
+          <div class="stop-text">
+            <p class="stop-dest">Haputale · Hill Country</p>
+            <p class="stop-hotel">Wishing Tree &nbsp;·&nbsp; 2 Nights</p>
+            <p class="stop-tagline">Mist, tea estates &amp; mountain solitude</p>
+          </div>
+        </li>
+        <li class="stop">
+          <div class="stop-num">05</div>
+          <div class="stop-text">
+            <p class="stop-dest">Yala</p>
+            <p class="stop-hotel">Koragaha Lodge &nbsp;·&nbsp; 2 Nights</p>
+            <p class="stop-tagline">Leopards, jungle BBQ &amp; wilderness nights</p>
+          </div>
+        </li>
+        <li class="stop">
+          <div class="stop-num">06</div>
+          <div class="stop-text">
+            <p class="stop-dest">South Coast</p>
+            <p class="stop-hotel">Apa Villa &nbsp;·&nbsp; 4 Nights</p>
+            <p class="stop-tagline">Golden sands, sea air &amp; honeymoon seclusion</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="overview-collage">
+      <div class="collage-img">
+        <img src="images/Experiences.jpg" alt="Sri Lanka" loading="lazy" style="object-position: center 50%">
+      </div>
+      <div class="collage-img">
+        <img src="images/Sigiriya Rock Fortress - 0D4A4170.jpg" alt="Sigiriya" loading="lazy" style="object-position: center 40%">
+      </div>
+      <div class="collage-img">
+        <img src="images/Game Drive - Large.jpg" alt="Yala Safari" loading="lazy" style="object-position: center 50%">
+      </div>
+      <div class="collage-img">
+        <img src="images/Tangalle 2.jpg" alt="South Coast" loading="lazy" style="object-position: center 20%">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Details Bar -->
+<div class="details-bar">
+  <div class="details-bar-item">
+    <span class="db-label">Duration</span>
+    <span class="db-value">14 Days · 13 Nights</span>
+  </div>
+  <div class="details-bar-item">
+    <span class="db-label">Transport</span>
+    <span class="db-value">Private Chauffeured Car</span>
+  </div>
+  <div class="details-bar-item">
+    <span class="db-label">Journey Style</span>
+    <span class="db-value">Boutique Luxury · Honeymoon</span>
+  </div>
+  <div class="details-bar-item">
+    <span class="db-label">Curated By</span>
+    <span class="db-value">Destinova Journeys</span>
+  </div>
+</div>
+
+<!-- ── DAY 1 — ARRIVAL ── -->
+<section class="day-section" id="arrival">
+  <div class="day-hero">
+    <img src="images/Flavors of Sri Lanka.jpg" alt="Arrival Sri Lanka" loading="lazy" style="object-position: center 55%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Day 01</span>
+      <span class="day-loc">Arrival · Coastal Welcome</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Your First Day in Paradise</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        Upon arrival in Sri Lanka, you are warmly welcomed by your private chauffeur from Destinova Journeys, who will take care of every detail from this moment forward. The drive to your hotel takes approximately 30 minutes — time enough to catch your first glimpse of the island's tropical abundance.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        Check into Wathura Resort &amp; Spa and let the island ease you gently into its unhurried pace. The rest of the day is entirely yours — relax by the beach, feel the warmth of the Sri Lankan sun, and breathe in the salt air of the Indian Ocean. Your honeymoon begins here, in the simplest and most perfect way possible.
+      </p>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Private arrival welcome by Destinova Journeys</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Wathura Resort &amp; Spa — coastal sanctuary</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">First evening by the beach</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Wathura Resort &amp; Spa</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Bed &amp; Breakfast</span></div>
+    <div class="accom-card"><span class="ac-label">Transfer</span><span class="ac-value">Private Car · 30 min</span></div>
+  </div>
+</section>
+
+<!-- ── DAYS 2–3 — SIGIRIYA ── -->
+<section class="day-section" id="sigiriya">
+  <div class="day-hero">
+    <img src="images/Kayaam Pontoon - Large.jpg" alt="Sigiriya — Kayaam Pontoon" loading="lazy" style="object-position: center 50%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Days 02 — 03</span>
+      <span class="day-loc">Sigiriya · Cultural Triangle</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">The Lion Rock &amp; Village Soul</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        After breakfast, your chauffeur begins a scenic four-hour drive to Sigiriya — a journey through lush paddy fields, roadside temples, and the gentle rhythms of rural Sri Lankan life. On arrival, check into Lake Lodge Kandalama, where floor-to-ceiling windows frame a landscape of lake and forest. In the afternoon, make the iconic ascent of Sigiriya Rock Fortress, an ancient royal citadel rising dramatically from the surrounding plains. The summit — reached after a climb of approximately 2.5 hours — rewards with sweeping views that stretch to the horizon.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        Day 3 brings you deep into the life of the Sri Lankan countryside. In Hiriwadunna, a warm village welcome leads to a tractor ride through the jungle where you discover traditional chena cultivation — age-old farming methods, crops guarded from wild elephants, and treehouses under the stars. A peaceful canoe glides you across the village lake to a local home, where you join in preparing Sri Lankan curries over a wood fire before sitting down together to eat. In the late afternoon, a guided cycle ride through the village offers one last, unhurried look at everyday life.
+      </p>
+      <div class="day-img-row">
+        <div class="day-img-row-item">
+          <img src="images/Boat rides 2.jpg" alt="Village Lake Canoe" loading="lazy" style="object-position: center 40%">
+        </div>
+        <div class="day-img-row-item">
+          <img src="images/Village tour cycling.png" alt="Village Cycling" loading="lazy" style="object-position: center 50%">
+        </div>
+      </div>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Sigiriya Rock Fortress — summit views</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Hiriwadunna village canoe &amp; cooking experience</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Traditional chena farming &amp; wildlife stories</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Afternoon cycle through the village lanes</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Lake Lodge Kandalama — forest &amp; lake views</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Lake Lodge Kandalama</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Bed &amp; Breakfast</span></div>
+    <div class="accom-card"><span class="ac-label">Transfer</span><span class="ac-value">Private Car · 4 hrs</span></div>
+  </div>
+</section>
+
+<!-- ── DAYS 4–5 — KANDY ── -->
+<section class="day-section" id="kandy">
+  <div class="day-hero">
+    <img src="images/Kandy.jpg" alt="Kandy Sri Lanka" loading="lazy" style="object-position: center 45%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Days 04 — 05</span>
+      <span class="day-loc">Kandy · Cultural Capital</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Sacred City &amp; the Art of Kandy</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        A two-hour drive through the hill foothills brings you to Kandy — Sri Lanka's cultural heart, its last royal capital, and one of the most atmospheric cities in all of South Asia. Afternoon is devoted to the Temple of the Tooth Relic, one of the most sacred Buddhist sites in the world, where a relic believed to be a tooth of the Lord Buddha resides within a sequence of gilded shrines. The atmosphere is deeply spiritual: incense, offerings, devotees in white, and the soft resonance of chanting — a profoundly moving experience. In the evening, a vibrant Kandyan cultural show brings traditional dance and drumming to vivid, colourful life.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        Day 5 is a walking day in the finest sense. A knowledgeable local guide leads you around the scenic Kandy Lake — its surface mirroring the Temple on the opposite bank — past the historic British Garrison Cemetery, through streets where Buddhist temples, Hindu kovils, Catholic churches, and mosques stand shoulder to shoulder in easy coexistence. Pause at the Empire Café before winding through the lively local market, rich with colour, spice, and the particular energy that only real markets carry.
+      </p>
+      <div class="day-extra-img">
+        <img src="images/Jetwing Ayruvedic -179.JPG" alt="Jetwing Ayurvedic Pavilions" loading="lazy" style="object-position: center 40%">
+      </div>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Temple of the Tooth — sacred &amp; unforgettable</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Evening Kandyan dance &amp; cultural show</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Kandy Lake walk &amp; multi-faith city trail</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Empire Café &amp; the bustling local market</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Hanthana Boutique</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Bed &amp; Breakfast</span></div>
+    <div class="accom-card"><span class="ac-label">Transfer</span><span class="ac-value">Private Car · 2 hrs</span></div>
+  </div>
+</section>
+
+<!-- ── DAYS 6–7 — HAPUTALE ── -->
+<section class="day-section" id="haputale">
+  <div class="day-hero">
+    <img src="images/Ceylon Tea Trails - Large2.jpg" alt="Haputale Tea Country" loading="lazy" style="object-position: center 88%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Days 06 — 07</span>
+      <span class="day-loc">Haputale · Hill Country</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Mist, Tea &amp; the Quiet of the Hills</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        A 2.5-hour drive climbs steadily into Sri Lanka's hill country, leaving the heat of the lowlands behind as the landscape transforms into a world of cool air, rolling green tea plantations, and mist that drifts between the ridges. Haputale is a charming town perched at elevation, with views that stretch across mountain ranges to the coast on clear days. Check into the Wishing Tree — an intimate boutique property set amidst the tea estates — and simply breathe.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        On Day 6, visit a working tea factory to witness the full journey of Ceylon tea — from the tender hand-picked leaf to the perfectly brewed cup. Each step of the process reveals something of the care and craftsmanship that has made Ceylon tea legendary the world over. Day 7 is left entirely for leisure: the cool climate, the panoramic views, and the unhurried pace of the hills are the only agenda. Perhaps a morning walk through the mist, an afternoon on the veranda, and a long, quiet evening together.
+      </p>
+      <div class="day-img-row">
+        <div class="day-img-row-item">
+          <img src="images/JWG_HighTea3_1057 (Copy).jpg" alt="High Tea Hill Country" loading="lazy" style="object-position: center 68%">
+        </div>
+        <div class="day-img-row-item">
+          <img src="images/Tea trail rooms.jpg" alt="Tea Trail Room" loading="lazy" style="object-position: center 50%">
+        </div>
+      </div>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Wishing Tree — boutique mountain retreat</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Working tea factory tour</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Tea plucking &amp; tasting experience</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Full day of leisure at elevation</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Mountain views &amp; cool highland air</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Wishing Tree Haputale</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Bed &amp; Breakfast</span></div>
+    <div class="accom-card"><span class="ac-label">Transfer</span><span class="ac-value">Private Car · 2.5 hrs</span></div>
+  </div>
+</section>
+
+<!-- ── DAYS 8–9 — YALA ── -->
+<section class="day-section" id="yala">
+  <div class="day-hero">
+    <img src="images/Game Drive - Large.jpg" alt="Yala National Park" loading="lazy" style="object-position: center 50%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Days 08 — 09</span>
+      <span class="day-loc">Yala · Wilderness</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Wild Nights &amp; Starlit Dinners</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        A four-hour drive south brings a dramatic shift in atmosphere — from the cool highlands to the warm, wild south, where Yala National Park spreads across a vast landscape of dry scrub, rocky outcrops, and ancient lagoons. Home to the world's highest concentration of leopards as well as elephants, sloth bears, crocodiles, and a spectacular array of birdlife, Yala delivers the kind of encounters that live in the memory for a lifetime. Your first evening game drive sets the tone: the park at golden hour, a jeep moving quietly through the bush, and the extraordinary sensation of being a guest in the wilderness.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        Day 9 begins with a guided morning walk through a nearby village — a peaceful, grounding experience that connects you to the people who share this landscape with its wildlife. After breakfast and a potter's morning, the afternoon holds a creative highlight: a hands-on pottery experience with a local artisan, shaping clay on a spinning wheel to create something entirely your own. The day ends with pure romance — a BBQ dinner set in the jungle, a bonfire, a canopy of stars, and the sounds of the bush around you.
+      </p>
+      <div class="day-img-row">
+        <div class="day-img-row-item">
+          <img src="images/Leopard.jpg" alt="Yala Leopard" loading="lazy" style="object-position: center 40%">
+        </div>
+        <div class="day-img-row-item">
+          <img src="images/Yala Block 05.jpg" alt="Yala National Park" loading="lazy" style="object-position: center 50%">
+        </div>
+      </div>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Koragaha Lodge — intimate jungle retreat</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Evening &amp; morning private game drives</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Village morning walk with naturalist</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Traditional pottery experience</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Jungle BBQ dinner under the stars</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Koragaha Lodge</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Bed &amp; Breakfast</span></div>
+    <div class="accom-card"><span class="ac-label">Transfer</span><span class="ac-value">Private Car · 4 hrs</span></div>
+  </div>
+</section>
+
+<!-- ── DAYS 10–13 — SOUTH COAST ── -->
+<section class="day-section" id="southcoast">
+  <div class="day-hero">
+    <img src="images/Tangalle 2.jpg" alt="South Coast Sri Lanka" loading="lazy" style="object-position: center 20%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Days 10 — 13</span>
+      <span class="day-loc">South Coast · The Long Beach</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Four Days of Pure, Honeymoon Bliss</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        A three-hour coastal drive sweeps you westward along Sri Lanka's southern shore — a shoreline of golden coves, fishing villages, and the Indian Ocean glittering to the horizon. Check into Apa Villa and let the beach take over. Four days here are designed to have no agenda whatsoever: swim in the sea, take long sunset walks along the shore, indulge in spa treatments, sleep in, and simply exist in the luxury of time and togetherness.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        The south coast is Sri Lanka at its most unhurried — far from the tourist trail, blessed with clean water and unspoilt coastline, and warmed by long golden evenings. Apa Villa's intimate setting provides the perfect backdrop for the final chapter of your honeymoon: quiet mornings, private dinners, and the soothing rhythm of the ocean as a constant companion.
+      </p>
+      <div class="day-extra-img">
+        <img src="images/Stilt fishing.png" alt="South Coast Sri Lanka" loading="lazy" style="object-position: center 52%">
+      </div>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Apa Villa — boutique beachfront luxury</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Four nights of pure coastal leisure</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Golden sands &amp; warm Indian Ocean</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Sunsets, spa, &amp; private beach dinners</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Far from the tourist trail — unspoilt south</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Apa Villa</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Bed &amp; Breakfast</span></div>
+    <div class="accom-card"><span class="ac-label">Transfer</span><span class="ac-value">Private Car · 3 hrs</span></div>
+  </div>
+</section>
+
+<!-- ── DAY 14 — DEPARTURE ── -->
+<section class="day-section" id="departure">
+  <div class="day-hero">
+    <img src="images/Negombo Beach.jpg" alt="Departure" loading="lazy" style="object-position: center 58%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Day 14</span>
+      <span class="day-loc">Departure</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Farewell, Eliot &amp; Leana</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        After a final leisurely breakfast by the sea, your private chauffeur arrives to escort you to the airport for your onward journey. The drive northward along the coast offers one last window onto the island — the fishing boats on the horizon, the palms swaying in the sea breeze, the warm, unhurried world you are leaving behind.
+      </p>
+      <p class="day-text" style="margin-top:16px; font-style:italic; color: var(--muted);">
+        "Sri Lanka does not let you leave unchanged — it simply waits, warm and unhurried, for your return."
+      </p>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Final breakfast by the Indian Ocean</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Private chauffeured departure transfer</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Seamless onward journey coordination</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ENQUIRE ── -->
+<section class="pricing" id="enquire">
+  <div class="pricing-logo">
+    <img src="images/destinova-logo-cropped-tight.png" alt="Destinova Journeys">
+  </div>
+  <div class="pricing-rule"></div>
+  <p class="contact-name" style="font-size:clamp(26px,3vw,34px);margin-bottom:16px;">Every Journey Is Yours Alone</p>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:17px;color:rgba(253,251,248,0.6);line-height:1.9;max-width:520px;margin:0 auto 44px;">
+    No fixed itineraries. No group tours. We design your perfect journey and provide a tailored quote based on your dates, preferences, and party size.
+  </p>
+  <a href="mailto:Sriyantha@destinovajourneys.com" class="enquire-btn">Enquire Now</a>
+  <div class="contact-strip">
+    <a href="mailto:Sriyantha@destinovajourneys.com" class="contact-email">Sriyantha@destinovajourneys.com</a>
+    <span class="contact-web">destinovajourneys.com</span>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="f-left">Destinova Journeys &nbsp;·&nbsp; Private Collection</span>
+  <span class="f-right">© 2026 &nbsp;·&nbsp; All rights reserved</span>
+</footer>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.day-section, .stop').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

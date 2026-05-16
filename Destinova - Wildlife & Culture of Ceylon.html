@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wildlife &amp; Culture of Ceylon — Destinova Journeys Private Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #1C2B3A;
+    --navy-l:  #243447;
+    --gold:    #C5A05A;
+    --gold-l:  #D4B576;
+    --cream:   #F7F2EA;
+    --cream-d: #EDE6D8;
+    --sage:    #5C6B52;
+    --charcoal:#2E2E2E;
+    --white:   #FDFBF8;
+    --muted:   #7A7A72;
+    --border:  rgba(197,160,90,0.22);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--cream); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 56px; height: 80px;
+    background: transparent;
+    transition: background 0.4s, height 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(28,43,58,0.96);
+    backdrop-filter: blur(14px);
+    height: 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo img { height: 48px; filter: brightness(0) invert(1); }
+  .nav-links { display:flex; gap:36px; list-style:none; }
+  .nav-links a {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(255,255,255,0.82);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── COVER ── */
+  .cover {
+    position: relative; height: 100vh; min-height: 700px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .cover-bg {
+    position: absolute; inset: 0;
+    background-image: url('images/Wildlife 3.jpg');
+    background-size: cover; background-position: center 50%;
+    transform: scale(1.04);
+    animation: zoomSlow 18s ease-out forwards;
+  }
+  @keyframes zoomSlow { to { transform: scale(1); } }
+  .cover-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(28,43,58,0.10) 0%,
+      rgba(28,43,58,0.30) 40%,
+      rgba(28,43,58,0.72) 100%
+    );
+  }
+  .cover-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    animation: fadeUp 1.4s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(28px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+  .cover-eyebrow {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
+    animation: fadeUp 1.4s 0.2s ease both;
+  }
+  .cover-rule {
+    width: 48px; height: 1px; background: var(--gold);
+    margin: 0 auto 22px; opacity: 0.8;
+    animation: fadeUp 1.4s 0.3s ease both;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 8vw, 82px);
+    font-weight: 400; font-style: italic;
+    color: var(--white); line-height: 1.1;
+    margin-bottom: 18px;
+    animation: fadeUp 1.4s 0.4s ease both;
+  }
+  .cover-destinations {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; letter-spacing: 0.12em;
+    color: var(--gold-l); margin-bottom: 16px;
+    animation: fadeUp 1.4s 0.5s ease both;
+  }
+  .cover-meta {
+    font-size: 9px; font-weight: 500; letter-spacing: 0.28em;
+    text-transform: uppercase; color: rgba(253,251,248,0.75);
+    animation: fadeUp 1.4s 0.6s ease both;
+  }
+  .cover-bottom {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 28px 56px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    z-index: 2;
+  }
+  .cover-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 13px;
+    color: rgba(253,251,248,0.6);
+  }
+  .cover-date {
+    font-size: 8px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .scroll-hint {
+    position: absolute; bottom: 68px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    gap: 8px; z-index: 2; opacity: 0.6;
+    animation: fadeUp 2s 1.2s ease both;
+  }
+  .scroll-hint span {
+    font-size: 8px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--white);
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--white), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+  @keyframes scrollPulse {
+    0%,100% { opacity:0.4; } 50% { opacity:1; }
+  }
+
+  /* ── OVERVIEW ── */
+  .overview {
+    background: var(--cream);
+    padding: 100px 56px 80px;
+  }
+  .overview-inner {
+    max-width: 1160px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 340px;
+    gap: 80px; align-items: start;
+  }
+  .section-tag {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 400; font-style: italic;
+    color: var(--navy); line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .section-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .gold-rule {
+    width: 56px; height: 1px;
+    background: var(--gold); margin-bottom: 28px;
+  }
+  .overview-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; line-height: 1.85;
+    color: var(--charcoal); margin-bottom: 48px;
+  }
+  .stops { list-style: none; position: relative; }
+  .stops::before {
+    content: ''; position: absolute;
+    left: 20px; top: 28px; bottom: 28px; width: 1px;
+    background: linear-gradient(to bottom, var(--gold) 0%, rgba(197,160,90,0.1) 100%);
+  }
+  .stop {
+    display: flex; gap: 24px; align-items: flex-start;
+    padding-bottom: 28px; position: relative;
+    opacity: 0; transform: translateX(-16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .stop.visible { opacity:1; transform:none; }
+  .stop-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--navy); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 600; color: var(--gold);
+    letter-spacing: 0.05em; position: relative; z-index: 1;
+  }
+  .stop-text { padding-top: 6px; }
+  .stop-dest {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; color: var(--navy); margin-bottom: 4px;
+  }
+  .stop-hotel {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 13px;
+    color: var(--gold); margin-bottom: 4px;
+  }
+  .stop-tagline {
+    font-size: 11px; color: var(--muted); letter-spacing: 0.02em;
+  }
+  .overview-collage {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 8px; position: sticky; top: 100px;
+  }
+  .collage-img {
+    aspect-ratio: 1/1; overflow: hidden; position: relative;
+  }
+  .collage-img:first-child {
+    grid-column: 1 / -1; aspect-ratio: 16/9;
+  }
+  .collage-img img {
+    width:100%; height:100%; object-fit:cover;
+    transition: transform 0.6s ease;
+  }
+  .collage-img:hover img { transform: scale(1.04); }
+  .collage-img::after {
+    content: ''; position: absolute; inset: 0;
+    border: 1px solid rgba(197,160,90,0.25);
+    pointer-events: none;
+  }
+
+  /* ── DETAILS BAR ── */
+  .details-bar {
+    background: var(--navy);
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    padding: 28px 56px;
+  }
+  .details-bar-item { padding: 0 16px; }
+  .details-bar-item:not(:last-child) {
+    border-right: 1px solid rgba(197,160,90,0.15);
+  }
+  .db-label {
+    font-size: 8px; font-weight: 600; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 6px; display: block;
+  }
+  .db-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px; color: var(--white);
+  }
+
+  /* ── DESTINATION SECTIONS ── */
+  .day-section {
+    background: var(--white);
+    border-bottom: 1px solid rgba(197,160,90,0.1);
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .day-section.visible { opacity:1; transform:none; }
+
+  /* Single hero */
+  .day-hero {
+    position: relative; height: 52vh; min-height: 380px;
+    overflow: hidden;
+  }
+  .day-hero img {
+    width:100%; height:100%; object-fit:cover;
+    object-position: center center;
+    transition: transform 8s ease;
+  }
+  .day-section.visible .day-hero img { transform: scale(1.03); }
+  .day-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(28,43,58,0.75) 0%,
+      rgba(28,43,58,0.05) 60%
+    );
+  }
+
+  /* Split dual hero */
+  .dual-hero {
+    position: relative; height: 52vh; min-height: 380px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+  .dual-hero-panel {
+    position: relative; overflow: hidden;
+  }
+  .dual-hero-panel img {
+    width:100%; height:100%; object-fit:cover;
+    transition: transform 8s ease;
+  }
+  .day-section.visible .dual-hero-panel img { transform: scale(1.03); }
+  .dual-hero-panel::after {
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(to top, rgba(28,43,58,0.65) 0%, transparent 55%);
+  }
+  .dual-hero-divider {
+    position: absolute; top: 0; bottom: 0;
+    left: 50%; width: 2px;
+    background: linear-gradient(to bottom, transparent, rgba(197,160,90,0.6), transparent);
+    z-index: 3;
+  }
+  .dual-hero-label {
+    position: absolute; bottom: 28px; z-index: 4;
+  }
+  .dual-hero-label.left { left: 40px; }
+  .dual-hero-label.right { left: calc(50% + 40px); }
+
+  .day-hero-label {
+    position: absolute; bottom: 28px; left: 56px; z-index: 2;
+  }
+  .day-num {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 6px; display: block;
+  }
+  .day-loc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 18px;
+    color: var(--white); display: block;
+  }
+  .day-loc-rule {
+    width: 40px; height: 1px;
+    background: rgba(197,160,90,0.7); margin-top: 8px;
+  }
+
+  /* Day body */
+  .day-body {
+    display: grid; grid-template-columns: 1fr 280px;
+    gap: 56px; padding: 52px 56px 40px;
+    max-width: 1160px; margin: 0 auto;
+  }
+  .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 400; font-style: italic;
+    color: var(--navy); margin-bottom: 14px; line-height: 1.2;
+  }
+  .day-gold-rule {
+    width: 80px; height: 1px; background: var(--gold); margin-bottom: 22px;
+  }
+  .day-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; line-height: 1.9; color: var(--charcoal);
+  }
+  .day-text + .day-text { margin-top: 16px; }
+
+  /* Single extra image */
+  .day-extra-img {
+    margin-top: 24px; overflow: hidden; position: relative;
+  }
+  .day-extra-img img {
+    width:100%; aspect-ratio:4/3; object-fit:cover;
+    display:block; transition: transform 0.5s;
+  }
+  .day-extra-img:hover img { transform: scale(1.03); }
+  .day-extra-img::after {
+    content:''; position:absolute; inset:0;
+    border:1px solid rgba(197,160,90,0.3); pointer-events:none;
+  }
+
+  /* Two-image row */
+  .day-img-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px; margin-top: 24px;
+  }
+  .day-img-row-item { overflow: hidden; position: relative; }
+  .day-img-row-item img {
+    width:100%; aspect-ratio:4/3; object-fit:cover;
+    display:block; transition: transform 0.5s;
+  }
+  .day-img-row-item:hover img { transform: scale(1.03); }
+  .day-img-row-item::after {
+    content:''; position:absolute; inset:0;
+    border:1px solid rgba(197,160,90,0.3); pointer-events:none;
+  }
+
+  /* Three-image row */
+  .day-img-trio {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px; margin-top: 24px;
+  }
+  .day-img-trio-item { overflow: hidden; position: relative; }
+  .day-img-trio-item img {
+    width:100%; aspect-ratio:1/1; object-fit:cover;
+    display:block; transition: transform 0.5s;
+  }
+  .day-img-trio-item:hover img { transform: scale(1.03); }
+  .day-img-trio-item::after {
+    content:''; position:absolute; inset:0;
+    border:1px solid rgba(197,160,90,0.3); pointer-events:none;
+  }
+
+  /* Highlights */
+  .day-highlights { padding-top: 6px; }
+  .highlights-label {
+    font-size: 8px; font-weight: 600; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px; display: block;
+  }
+  .highlight-item {
+    display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;
+  }
+  .hi-diamond { color: var(--gold); font-size: 7px; margin-top: 4px; flex-shrink: 0; }
+  .hi-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 14px; color: var(--muted); line-height: 1.6;
+  }
+
+  /* Accom strip */
+  .accom-strip {
+    display: flex; gap: 12px; padding: 0 56px 40px;
+    max-width: 1160px; margin: 0 auto;
+  }
+  .accom-card {
+    background: var(--navy-l); padding: 14px 20px; flex: 1; min-width: 140px;
+  }
+  .ac-label {
+    font-size: 7px; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 6px; display: block;
+  }
+  .ac-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 14px; color: var(--white);
+  }
+
+  /* ── ENQUIRE SECTION ── */
+  .pricing {
+    background: var(--navy);
+    padding: 100px 56px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .pricing::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(197,160,90,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .pricing-logo { margin-bottom: 32px; }
+  .pricing-logo img { height: 90px; filter: brightness(0) invert(1); opacity: 0.9; }
+  .pricing-rule { width: 60px; height: 1px; background: var(--gold); margin: 0 auto 32px; opacity: 0.6; }
+  .contact-strip {
+    border-top: 1px solid rgba(197,160,90,0.2); padding-top: 40px;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .contact-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 20px; color: var(--white);
+  }
+  .contact-email {
+    font-size: 11px; color: var(--muted); text-decoration: none; transition: color 0.3s;
+  }
+  .contact-email:hover { color: var(--gold); }
+  .contact-web { font-size: 10px; color: rgba(197,160,90,0.5); letter-spacing: 0.08em; }
+  .enquire-btn {
+    display: inline-block;
+    padding: 18px 56px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.28em;
+    text-transform: uppercase; text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+    margin-bottom: 56px;
+  }
+  .enquire-btn:hover { background: var(--gold); color: var(--navy); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-l); padding: 22px 56px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(197,160,90,0.15);
+  }
+  footer .f-left { font-size: 9px; letter-spacing: 0.15em; color: rgba(122,122,114,0.6); text-transform: uppercase; }
+  footer .f-right { font-size: 9px; color: rgba(197,160,90,0.4); letter-spacing: 0.1em; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .overview, .pricing { padding: 72px 24px 60px; }
+    .overview-inner { grid-template-columns: 1fr; gap: 48px; }
+    .overview-collage { position: static; }
+    .day-body { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px 28px; }
+    .accom-strip { flex-wrap: wrap; padding: 0 24px 32px; }
+    .day-hero-label { left: 24px; }
+    .dual-hero { grid-template-columns: 1fr; height: auto; }
+    .dual-hero-panel { height: 260px; }
+    .dual-hero-label.right { left: 24px; bottom: 28px; }
+    .dual-hero-divider { display: none; }
+    .details-bar { grid-template-columns: 1fr 1fr; padding: 24px; gap: 20px; }
+    .details-bar-item { border-right: none; padding: 0; }
+    .cover-bottom { padding: 20px 24px; }
+    footer { padding: 18px 24px; flex-direction: column; gap: 8px; text-align: center; }
+    .day-img-row { grid-template-columns: 1fr; }
+    .day-img-trio { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="main-nav">
+  <div class="nav-logo">
+    <img src="images/destinova-logo-cropped-tight.png" alt="Destinova Journeys">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#negombo">Itinerary</a></li>
+    <li><a href="#enquire">Enquire</a></li>
+  </ul>
+</nav>
+
+<!-- ── COVER ── -->
+<section class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-overlay"></div>
+  <div class="cover-content">
+    <span class="cover-eyebrow">Destinova Journeys &nbsp;·&nbsp; Private Collection</span>
+    <div class="cover-rule"></div>
+    <h1 class="cover-title">Wildlife &amp; Culture<br>of Ceylon</h1>
+    <p class="cover-destinations">Wilpattu &nbsp;·&nbsp; Sigiriya &nbsp;·&nbsp; Kandy &nbsp;·&nbsp; Nuwara Eliya &nbsp;·&nbsp; Udawalawe &nbsp;·&nbsp; Galle</p>
+    <p class="cover-meta">14 Days &nbsp;·&nbsp; A Private Journey &nbsp;·&nbsp; Sri Lanka</p>
+  </div>
+  <div class="scroll-hint">
+    <span>Discover</span>
+    <div class="scroll-line"></div>
+  </div>
+  <div class="cover-bottom">
+    <span class="cover-tag">From ancient citadels to untamed wilderness</span>
+    <span class="cover-date">Private Collection · 2026</span>
+  </div>
+</section>
+
+<!-- ── OVERVIEW ── -->
+<section class="overview" id="overview">
+  <div class="overview-inner">
+    <div class="overview-left">
+      <span class="section-tag">Your Journey</span>
+      <h2 class="section-title">An Island of Two Worlds</h2>
+      <p class="section-sub">Fourteen Days Through Sri Lanka's Wild Heart &amp; Ancient Soul</p>
+      <div class="gold-rule"></div>
+      <p class="overview-intro">
+        Sri Lanka is one of the world's great surprises — an island where ancient stone kingdoms and misty tea highlands exist alongside some of Asia's finest wildlife encounters. This fourteen-day journey traces a path from the pristine forests of Wilpattu, through the legendary rock citadels of Sigiriya and Polonnaruwa, across the sacred city of Kandy and the cool highland estates of Nuwara Eliya, and down into the elephant plains of Udawalawe before arriving at the colonial grandeur of Galle's UNESCO-listed fort. Every destination curated by Destinova Journeys to show you the island at its richest and most revealing.
+      </p>
+      <ul class="stops">
+        <li class="stop">
+          <div class="stop-num">01</div>
+          <div class="stop-text">
+            <p class="stop-dest">Negombo</p>
+            <p class="stop-hotel">Jetwing Beach &nbsp;·&nbsp; 1 Night</p>
+            <p class="stop-tagline">Coastal arrival &amp; warm welcome</p>
+          </div>
+        </li>
+        <li class="stop">
+          <div class="stop-num">02</div>
+          <div class="stop-text">
+            <p class="stop-dest">Wilpattu National Park</p>
+            <p class="stop-hotel">Ibis Wilpattu &nbsp;·&nbsp; 2 Nights</p>
+            <p class="stop-tagline">Dawn &amp; dusk safaris in Sri Lanka's wild north</p>
+          </div>
+        </li>
+        <li class="stop">
+          <div class="stop-num">03</div>
+          <div class="stop-text">
+            <p class="stop-dest">Sigiriya &amp; the Ancient Cities</p>
+            <p class="stop-hotel">Aliya Resort &nbsp;·&nbsp; 2 Nights</p>
+            <p class="stop-tagline">Lion Rock, frescoes &amp; the ruins of Polonnaruwa</p>
+          </div>
+        </li>
+        <li class="stop">
+          <div class="stop-num">04</div>
+          <div class="stop-text">
+            <p class="stop-dest">Kandy</p>
+            <p class="stop-hotel">Clove Villa &nbsp;·&nbsp; 1 Night</p>
+            <p class="stop-tagline">Temple of the Tooth &amp; Ceylon's sacred heart</p>
+          </div>
+        </li>
+        <li class="stop">
+          <div class="stop-num">05</div>
+          <div class="stop-text">
+            <p class="stop-dest">Nuwara Eliya · Hill Country</p>
+            <p class="stop-hotel">Jetwing St. Andrews &nbsp;·&nbsp; 2 Nights</p>
+            <p class="stop-tagline">Horton Plains, tea estates &amp; highland air</p>
+          </div>
+        </li>
+        <li class="stop">
+          <div class="stop-num">06</div>
+          <div class="stop-text">
+            <p class="stop-dest">Udawalawe &amp; Sinharaja</p>
+            <p class="stop-hotel">Grand Udawalawe · Sinharaja Forest Edge &nbsp;·&nbsp; 3 Nights</p>
+            <p class="stop-tagline">Wild elephants &amp; virgin rainforest</p>
+          </div>
+        </li>
+        <li class="stop">
+          <div class="stop-num">07</div>
+          <div class="stop-text">
+            <p class="stop-dest">Galle &amp; the South Coast</p>
+            <p class="stop-hotel">Heritage Galle Fort &nbsp;·&nbsp; 2 Nights</p>
+            <p class="stop-tagline">Colonial grandeur, fort walks &amp; the southern shore</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="overview-collage">
+      <div class="collage-img">
+        <img src="images/Minneriya Elephant Gathering IMG_4944.jpg" alt="Elephant Gathering" loading="lazy" style="object-position: center 55%">
+      </div>
+      <div class="collage-img">
+        <img src="images/Sigiriya Rock Fortress - 0D4A4170.jpg" alt="Sigiriya" loading="lazy" style="object-position: center 40%">
+      </div>
+      <div class="collage-img">
+        <img src="images/Game Drive - Large.jpg" alt="Safari" loading="lazy" style="object-position: center 50%">
+      </div>
+      <div class="collage-img">
+        <img src="images/Galle Fort and Excursions_900x602.jpg" alt="Galle Fort" loading="lazy" style="object-position: center 45%">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Details Bar -->
+<div class="details-bar">
+  <div class="details-bar-item">
+    <span class="db-label">Duration</span>
+    <span class="db-value">14 Days · 13 Nights</span>
+  </div>
+  <div class="details-bar-item">
+    <span class="db-label">Transport</span>
+    <span class="db-value">Private Chauffeur Guide</span>
+  </div>
+  <div class="details-bar-item">
+    <span class="db-label">Journey Style</span>
+    <span class="db-value">Wildlife &amp; Cultural Discovery</span>
+  </div>
+  <div class="details-bar-item">
+    <span class="db-label">Curated By</span>
+    <span class="db-value">Destinova Journeys</span>
+  </div>
+</div>
+
+<!-- ── DAY 1 — NEGOMBO ── -->
+<section class="day-section" id="negombo">
+  <div class="day-hero">
+    <img src="images/Negombo Beach.jpg" alt="Negombo Sri Lanka" loading="lazy" style="object-position: center 40%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Day 01</span>
+      <span class="day-loc">Arrival · Negombo</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Pearl of the Indian Ocean</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        Welcome to Sri Lanka. Upon your arrival at Bandaranaike International Airport, you are greeted by your private Destinova Journeys chauffeur guide and escorted to your vehicle. The transfer to Jetwing Beach in Negombo takes just thirty minutes along the coast — your first taste of the island's warm air and tropical light.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        Negombo is a gentle introduction to Sri Lanka: a sun-drenched coastal town with a working fishing harbour, Dutch colonial canals, and a long stretch of golden beach. Check into your hotel, settle in, and allow the island to ease you into its unhurried rhythm. Tonight, the sound of the ocean and the warmth of a first Sri Lankan sunset are the only agenda.
+      </p>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Private airport welcome by Destinova Journeys</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Jetwing Beach — beachfront elegance</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">First evening on the Indian Ocean shore</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Jetwing Beach</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Bed &amp; Breakfast</span></div>
+    <div class="accom-card"><span class="ac-label">Transfer</span><span class="ac-value">Private Car · 30 min</span></div>
+  </div>
+</section>
+
+<!-- ── DAYS 2–3 — WILPATTU ── -->
+<section class="day-section" id="wilpattu">
+  <div class="day-hero">
+    <img src="images/Game Drive - Large.jpg" alt="Wilpattu National Park Safari" loading="lazy" style="object-position: center 78%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Days 02 — 03</span>
+      <span class="day-loc">Wilpattu · Wild North</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Into the Forest — Sri Lanka's Secret Wild</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        After breakfast, check out and transfer north to Wilpattu National Park — a park quite unlike any other in Sri Lanka. Unlike the open grasslands of Yala, Wilpattu is characterised by deep forest cover: dense dry zone woodland and thorny scrub, vast open grasslands, and the remarkable natural lakes known as <em>villus</em> — saucer-shaped basins that fill with rainwater and attract extraordinary concentrations of wildlife. The park's remoteness has kept it wild and uncrowded, making every encounter feel like a genuine discovery. On arrival, check into your lodge and head out for your first evening game drive as the park shifts into its magnificent golden hour.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        Day 3 is given entirely to Wilpattu's rhythms: a dawn safari at first light, when leopards and sloth bears move through the cool morning air, and a dusk drive as the villus fill with birdlife and the light turns amber. The stretch of coast nearby — including the dramatic Portuguese Bay and Dutch Bay, with their reddish cliffs rising from tiny beaches — adds a final, unexpected dimension to this remarkable landscape.
+      </p>
+      <div class="day-img-row">
+        <div class="day-img-row-item">
+          <img src="images/Leopard.jpg" alt="Sri Lanka Leopard" loading="lazy" style="object-position: center 40%">
+        </div>
+        <div class="day-img-row-item">
+          <img src="images/Bundala National Park.jpg" alt="Wildlife Sri Lanka" loading="lazy" style="object-position: center 50%">
+        </div>
+      </div>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Wilpattu — Sri Lanka's least-visited major park</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Dawn &amp; dusk jeep safaris through deep forest</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Natural <em>villu</em> lakes teeming with birdlife</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Leopard, sloth bear &amp; elephant country</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Ibis Wilpattu — jungle lodge retreat</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Ibis Wilpattu</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Half Board</span></div>
+    <div class="accom-card"><span class="ac-label">Transfer</span><span class="ac-value">Private Car · 2 hrs</span></div>
+  </div>
+</section>
+
+<!-- ── DAYS 4–5 — SIGIRIYA ── -->
+<section class="day-section" id="sigiriya">
+  <div class="day-hero">
+    <img src="images/Sigiriya wide angle.png" alt="Sigiriya Rock Fortress" loading="lazy" style="object-position: center 50%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Days 04 — 05</span>
+      <span class="day-loc">Sigiriya · The Ancient Cities</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">The Lion Rock &amp; the Lost Kingdoms</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        After breakfast, check out and drive to Sigiriya. Rising dramatically from the central plains, the Sigiriya Rock Fortress is perhaps Sri Lanka's single most dramatic sight — a 5th-century royal citadel built by King Kashyapa atop a volcanic plug of rock 200 metres above the surrounding jungle. The ascent takes you past the world-renowned frescoes of the Heavenly Maidens, painted in earth pigments directly onto the rock face, and through the Lion's Gate — the gateway through which the last king once looked out over his kingdom. The views from the summit stretch to the horizon in every direction.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        Day 5 takes you to Polonnaruwa, a UNESCO World Heritage Site and Sri Lanka's magnificent mediaeval capital from the 11th to 13th centuries. The ruins here are among the finest in Asia — the Gal Vihara's colossal rock-cut Buddha statues, the great dagobas, the palace complexes and council chambers of an ancient civilization at the height of its power. A knowledgeable local guide brings it all vividly to life.
+      </p>
+      <div class="day-img-row">
+        <div class="day-img-row-item">
+          <img src="images/Sigiriya Frescose.jpg" alt="Sigiriya Frescoes" loading="lazy" style="object-position: center 45%">
+        </div>
+        <div class="day-img-row-item">
+          <img src="images/Polonnaruwa.jpg" alt="Polonnaruwa Ruins" loading="lazy" style="object-position: center 50%">
+        </div>
+      </div>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Sigiriya Rock Fortress — summit panorama</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">5th-century frescoes of the Heavenly Maidens</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Polonnaruwa — UNESCO World Heritage ruins</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Gal Vihara rock-cut Buddha statues</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Aliya Resort — elevated views of the plains</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Aliya Resort</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Bed &amp; Breakfast</span></div>
+    <div class="accom-card"><span class="ac-label">Transfer</span><span class="ac-value">Private Car · 2 hrs</span></div>
+  </div>
+</section>
+
+<!-- ── DAY 6 — KANDY ── -->
+<section class="day-section" id="kandy">
+  <div class="day-hero">
+    <img src="images/Kandy.jpg" alt="Kandy Sri Lanka" loading="lazy" style="object-position: center 45%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Day 06</span>
+      <span class="day-loc">Kandy · Sacred Capital</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">The Temple, the Lake &amp; the Living City</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        After breakfast, check out and drive to Kandy — Sri Lanka's cultural capital and the seat of the last Sinhalese kingdom. En route, pause at the Dambulla Cave Temple, a UNESCO World Heritage Site where five caves shelter over 150 Buddha statues and some of the most extraordinary ancient murals in Asia, painted across ceilings and walls in a continuous scroll of colour and devotion that stretches back fifteen centuries.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        On arrival in Kandy, check into your hotel and devote the afternoon to the Temple of the Tooth Relic — the most sacred Buddhist shrine in Sri Lanka, housing a relic believed to be the Buddha's tooth. Set around the shores of Kandy Lake, the temple's gilded shrines, drifting incense, and the resonant sound of ceremonial drums create an atmosphere of exceptional stillness and reverence. The city itself rewards a gentle evening walk: Buddhist temples, Hindu kovils and colonial-era churches standing in easy coexistence along the same street.
+      </p>
+      <div class="day-extra-img">
+        <img src="images/Dambulla Cave Temple.jpg" alt="Dambulla Cave Temple" loading="lazy" style="object-position: center 45%">
+      </div>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Dambulla Cave Temple — ancient mural splendour</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Temple of the Tooth Relic — Sri Lanka's holiest site</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Kandy Lake &amp; the old city walk</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Clove Villa — intimate boutique stay</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Clove Villa</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Bed &amp; Breakfast</span></div>
+    <div class="accom-card"><span class="ac-label">Transfer</span><span class="ac-value">Private Car · 3 hrs</span></div>
+  </div>
+</section>
+
+<!-- ── DAYS 7–8 — NUWARA ELIYA ── -->
+<section class="day-section" id="nuweliya">
+  <div class="day-hero">
+    <img src="images/Ceylon Tea Trails - Large.jpg" alt="Nuwara Eliya Hill Country" loading="lazy" style="object-position: center 50%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Days 07 — 08</span>
+      <span class="day-loc">Nuwara Eliya · Hill Country</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Little England in the Clouds</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        The drive to Nuwara Eliya climbs steadily into the cool highlands, the landscape softening from tropical green to rolling tea gardens as the altitude rises. Nuwara Eliya — known affectionately as "Little England" for its colonial bungalows, rose gardens, and cool mountain climate — is one of Sri Lanka's most distinctive destinations. Check into Jetwing St. Andrews and allow the crisp highland air to refresh after days in the heat of the lowlands.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        Day 8 begins at Horton Plains National Park — Sri Lanka's highest and most dramatic plateau, a wind-swept landscape of montane forest, grasslands, and mist. The trail to World's End delivers one of the island's great experiences: a precipitous 900-metre escarpment dropping away to the southern plains below. In the afternoon, visit a working tea estate and factory to follow the journey of Ceylon tea from freshly hand-picked leaf to the perfectly brewed cup — a process as skilful and precise as any art form.
+      </p>
+      <div class="day-img-row">
+        <div class="day-img-row-item">
+          <img src="images/Horton Plains 1.png" alt="Horton Plains World's End" loading="lazy" style="object-position: center 82%">
+        </div>
+        <div class="day-img-row-item">
+          <img src="images/Tea Plantation pic.jpg" alt="Ceylon Tea Plantation" loading="lazy" style="object-position: center 50%">
+        </div>
+      </div>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Horton Plains — World's End escarpment walk</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Tea estate &amp; factory tour</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Ceylon tea tasting in the highlands</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Cool mountain air &amp; misty mornings</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Jetwing St. Andrews — colonial highland retreat</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Jetwing St. Andrews</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Bed &amp; Breakfast</span></div>
+    <div class="accom-card"><span class="ac-label">Transfer</span><span class="ac-value">Private Car · 2.5 hrs</span></div>
+  </div>
+</section>
+
+<!-- ── DAYS 9–11 — UDAWALAWE & SINHARAJA ── -->
+<section class="day-section" id="udawalawe">
+  <div class="day-hero">
+    <img src="images/Minneriya Elephant Gathering IMG_4944.jpg" alt="Wild Elephants Sri Lanka" loading="lazy" style="object-position: center 55%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Days 09 — 11</span>
+      <span class="day-loc">Udawalawe &amp; Sinharaja · Southern Wild</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Elephant Country &amp; the Last Rainforest</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        Check out and descend through the foothills to Udawalawe National Park, framed by soaring highlands to the north and one of the world's finest destinations for seeing wild Asian elephants. Largely grasslands and bush forest, the park hosts large resident herds who move freely across the landscape in family groups, allowing for extended, unhurried viewing. An afternoon safari on arrival offers your first close encounters. En route, pause at the Udawalawe Elephant Transit Home — a remarkable facility dedicated to rehabilitating and returning orphaned elephant calves to the wild.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        Day 10 continues south to Sinharaja — one of Sri Lanka's most extraordinary and least visited destinations. The Sinharaja rainforest occupies a deep ridge at the heart of the island's wet zone and is a UNESCO World Heritage Site: a pristine, ancient forest covering a broad ridge, accessible only on foot with expert park rangers. The biodiversity here is staggering — over half the endemic birds of Sri Lanka can be found in a single morning walk, along with rare mammals, extraordinary insects, and a canopy of trees hundreds of years old. Day 11 brings another full morning in this irreplaceable wilderness before continuing towards the south coast.
+      </p>
+      <div class="day-img-row">
+        <div class="day-img-row-item">
+          <img src="images/Elephant.jpg" alt="Udawalawe Wild Elephants" loading="lazy" style="object-position: center 45%">
+        </div>
+        <div class="day-img-row-item">
+          <img src="images/Wildlife 3.jpg" alt="Sinharaja Wildlife" loading="lazy" style="object-position: center 50%">
+        </div>
+      </div>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Udawalawe — wild Asian elephant encounters</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Elephant Transit Home visit</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Sinharaja — UNESCO virgin rainforest trek</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Endemic birdlife &amp; rare wildlife sightings</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Expert naturalist guides throughout</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Grand Udawalawe · Sinharaja Forest Edge</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Half Board</span></div>
+    <div class="accom-card"><span class="ac-label">Transfer</span><span class="ac-value">Private Car · 3 hrs</span></div>
+  </div>
+</section>
+
+<!-- ── DAYS 12–13 — GALLE ── -->
+<section class="day-section" id="galle">
+  <div class="day-hero">
+    <img src="images/Galle Fort and Excursions_900x602.jpg" alt="Galle Fort Sri Lanka" loading="lazy" style="object-position: center 45%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Days 12 — 13</span>
+      <span class="day-loc">Galle · Fort &amp; South Coast</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">The Fort at the Edge of the World</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        After breakfast, check out and drive to Galle — a journey that traces the southern coastline through fishing villages and coconut groves before arriving at one of the most remarkable towns in Asia. Galle Fort is a UNESCO World Heritage Site and the best-preserved colonial sea fortress on the continent — built by the Portuguese in the late 16th century, expanded by the Dutch, and finally polished by the British, its ramparts, bastions, and grid of narrow streets create a living town that has changed little in three centuries. Check into Heritage Galle Fort and spend the afternoon exploring on foot.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        Day 13 is entirely at leisure within the fort and along the south coast. Walk the ramparts at sunset as the Indian Ocean catches the evening light on three sides. Browse the boutiques, galleries, and spice shops that line the old Dutch streets. Eat fresh seafood at a table overlooking the sea. The fort rewards wandering — every alleyway reveals something: a hidden courtyard, a centuries-old church, a craftsman at work in a doorway. A perfect final full day before departure.
+      </p>
+      <div class="day-extra-img">
+        <img src="images/Amangalla, Sri Lanka - Main Entrance.jpg" alt="Amangalla Galle Fort" loading="lazy" style="object-position: center 50%">
+      </div>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Highlights</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Galle Fort — UNESCO colonial sea fortress</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Rampart sunset walk with ocean panoramas</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Dutch-era streets, boutiques &amp; galleries</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Heritage Galle Fort — historic character hotel</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Fresh seafood by the southern shore</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Overnight</span><span class="ac-value">Heritage Galle Fort</span></div>
+    <div class="accom-card"><span class="ac-label">Board</span><span class="ac-value">Bed &amp; Breakfast</span></div>
+    <div class="accom-card"><span class="ac-label">Transfer</span><span class="ac-value">Private Car · 1.5 hrs</span></div>
+  </div>
+</section>
+
+<!-- ── DAY 14 — DEPARTURE ── -->
+<section class="day-section" id="departure">
+  <div class="day-hero">
+    <img src="images/Sustainability.png" alt="Sri Lanka Departure" loading="lazy" style="object-position: center 50%">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-label">
+      <span class="day-num">Day 14</span>
+      <span class="day-loc">Departure · Until We Meet Again</span>
+      <div class="day-loc-rule"></div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div>
+      <h3 class="day-title">Farewell to the Pearl of the Indian Ocean</h3>
+      <div class="day-gold-rule"></div>
+      <p class="day-text">
+        Breakfast at your hotel before your private chauffeur collects you for the transfer to Bandaranaike International Airport. The drive north along the coast road takes approximately three hours, offering a final sweep of the island's southern and western shores before the city. Please plan to arrive at the airport three hours before your scheduled flight.
+      </p>
+      <p class="day-text" style="margin-top:16px;">
+        Fourteen days, two distinct worlds — the wild and the ancient, the forest and the fortress — and one island that has a way of staying with its visitors long after they leave. Until next time.
+      </p>
+    </div>
+    <div class="day-highlights">
+      <span class="highlights-label">Included Services</span>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Private airport transfers throughout</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">English-speaking chauffeur guide</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">13 nights accommodation as listed</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">All site entrance fees per itinerary</span></div>
+      <div class="highlight-item"><span class="hi-diamond">◆</span><span class="hi-text">Meals as specified (BB / HB)</span></div>
+    </div>
+  </div>
+  <div class="accom-strip">
+    <div class="accom-card"><span class="ac-label">Transfer</span><span class="ac-value">Private Car · 3 hrs</span></div>
+    <div class="accom-card"><span class="ac-label">Airport</span><span class="ac-value">Bandaranaike International</span></div>
+    <div class="accom-card"><span class="ac-label">Arrive</span><span class="ac-value">3 Hours Before Departure</span></div>
+  </div>
+</section>
+
+<!-- ── ENQUIRE ── -->
+<section class="pricing" id="enquire">
+  <div class="pricing-logo">
+    <img src="images/destinova-logo-cropped-tight.png" alt="Destinova Journeys">
+  </div>
+  <div class="pricing-rule"></div>
+  <p class="contact-name" style="font-size:clamp(26px,3vw,34px);margin-bottom:16px;">Every Journey Is Yours Alone</p>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:17px;color:rgba(253,251,248,0.6);line-height:1.9;max-width:520px;margin:0 auto 44px;">
+    No fixed itineraries. No group tours. We design your perfect journey and provide a tailored quote based on your dates, preferences, and party size.
+  </p>
+  <a href="mailto:Sriyantha@destinovajourneys.com" class="enquire-btn">Enquire Now</a>
+  <div class="contact-strip">
+    <a href="mailto:Sriyantha@destinovajourneys.com" class="contact-email">Sriyantha@destinovajourneys.com</a>
+    <span class="contact-web">destinovajourneys.com</span>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="f-left">© 2026 Destinova Journeys · All Rights Reserved</span>
+  <span class="f-right">destinovajourneys.com</span>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Intersection Observer — sections & stops
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.day-section, .stop').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
